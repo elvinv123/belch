@@ -18,7 +18,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: auto
  }
- .form-container {
+ .session-form-container {
      width: 21%;
      font-size: 14px;
      /* display: inline-block;
@@ -28,7 +28,7 @@
         top: 50%;
         left: 50%;
         margin-right: -75%;
-        transform: translate(-105%, -155%);
+        transform: translate(-100%, -187%);
  }
 
  .session-page-header{
@@ -39,7 +39,7 @@
   /* left: 0; */
  }
 
- .form-container .email-field{
+ .session-form-container .email-field{
     width: 74%;
      padding: 5px 9px;
     margin: 0px 0px 9px;
@@ -73,7 +73,7 @@
     max-width: 147px;
  }
 
- .form-container .password-field{
+ .session-form-container .password-field{
      min-width: 300px;
       /* width: 74%; */
     padding: 5px 9px;
@@ -85,7 +85,7 @@
      
  }
 
-  .form-container .zipcode-field{
+  .session-form-container .zipcode-field{
       min-width: 300px;
        /* width: 74%; */
      padding: 5px 9px;
@@ -125,7 +125,7 @@
       margin: 0px 0px 9px;
   }
 
-  .form-container .session-button{
+  .session-form-container .session-button{
       display: block;
       width: 74%;
       background-color: #d32324;
@@ -145,6 +145,7 @@
 
   .signup-text{
       text-align: center;
+      max-width: 300px;
   }
 
   .signup-text h2 {
@@ -218,6 +219,11 @@
 margin-top: 10px;
 }
 
-.session-form-container{
-  
+
+.footer_img_1{
+position: relative;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
 }
