@@ -28,21 +28,34 @@ class SessionForm extends React.Component {
         this.props.processForm(this.state);
     }
 
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render() {
         const { email, password } = this.state;
-
+        
         return (
             <>
                 <div className="session-page-header"></div>
                 <div className="session-maincontent">
                     <img className="signup_img_1" src={window.signup_img_1} />
-                    <div className="form-container">
+                    <div className="session-form-container">
                         <div className="signup-text">
                             <h2>Sign in to Belch</h2>
                             <p className="login-link-header">New to Belch? <Link to="/signup">Sign up</Link></p>
                             <p className="privacy">By continuing, you agree to Belch's <a href="https://terms.yelp.com/tos/en_us/20200101_en_us/">Terms of Service</a> and
                             ackknowledge Belch's <a href="https://terms.yelp.com/privacy/en_us/20200101_en_us/">Privacy Policy</a>
                             </p>
+                            {this.renderErrors()}
                         </div>
                         <form onSubmit={this.handleSubmit}>
                             <input
@@ -65,7 +78,9 @@ class SessionForm extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div className="session-footer"></div>
+                <div className="session-footer">
+                    <img className="footer_img_1" src={window.footer_img_1} />
+                </div>
             </>
         );
     }

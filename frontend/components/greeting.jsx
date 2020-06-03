@@ -10,8 +10,7 @@ const Greeting = ({ currentUser, logout }) => (
             </div>
         ) : (
                 <div>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Login</Link>
+                   
                 </div>
             )}
     </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 class UserForm extends React.Component {
     constructor(props) {
-        // debugger
+        
         super(props);
   
             this.state = {
@@ -30,6 +30,18 @@ class UserForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.processForm(this.state);
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))[0]}
+            </ul>
+        );
     }
 
     render() {
@@ -60,6 +72,7 @@ class UserForm extends React.Component {
             }
             return days;
         }
+
 
         return (
             <section className="signup-page">
@@ -137,13 +150,15 @@ class UserForm extends React.Component {
                             </select>
                         </span>
                         </div>
-                        
+                        {this.renderErrors()}
                         <button className="session-button"type="submit">Sign Up</button>
                             <p className="login-link">Already on Belch? <Link to="/login">Login</Link></p>
                 </form>
                 </div>
             </div>
-                <div className="session-footer"></div>
+                <div className="session-footer">
+                    <img className="footer_img_1" src={window.footer_img_1} />
+                </div>
             </section>
         );
     }
