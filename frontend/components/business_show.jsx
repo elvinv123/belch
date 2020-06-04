@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route} from 'react-router-dom';
+import ReviewFormContainer from './review_form_container';
 
 class BusinessShow extends React.Component{
     constructor(props) {
@@ -12,12 +13,12 @@ class BusinessShow extends React.Component{
         this.props.fetchBusiness(this.props.businessId)
     }
 
-    stars(){
-        
-    }
+
 
     render(){
+
         if (!this.props.business) return null;
+
         return (
             <>
                 <div className="business-page-header">
@@ -28,10 +29,9 @@ class BusinessShow extends React.Component{
 
                 <div className="business-maincontent">
                     <h2 className="business-name">{this.props.business.name}</h2>
-                    {/* <div>{this.stars()}</div> */}
                     <div className="details-container">
                         {this.props.business.phone_number}
-
+                        <Link to={`/businesses/${this.props.businessId}/review`}> leave a review </Link>
                     </div>
                 
                 </div>
