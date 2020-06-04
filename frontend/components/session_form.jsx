@@ -45,7 +45,9 @@ class SessionForm extends React.Component {
         
         return (
             <>
-                <div className="session-page-header"></div>
+                <div className="session-page-header">
+                    <img className="logo_img_1" src={window.logo_img_1} />
+                </div>
                 <div className="session-maincontent">
                     <img className="signup_img_1" src={window.signup_img_1} />
                     <div className="session-form-container">
@@ -78,7 +80,7 @@ class SessionForm extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div className="session-footer">
+                <div className="footer">
                     <img className="footer_img_1" src={window.footer_img_1} />
                 </div>
             </>
