@@ -3,7 +3,7 @@ import UserForm from "./user_form";
 import { signup } from "../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => ({
-    errors: state.errors.session,
+    errors: state.errors,
     formType: "signup",
 });
 

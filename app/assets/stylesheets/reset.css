@@ -1,4 +1,4 @@
-html, body, header, nav, h1,
+html, body, header, a, nav, h1,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
 fieldset, label, input, textarea,
@@ -43,4 +43,11 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+a:hover{
+text-decoration: underline;
+}
+a{
+  color: #0073bb;
 }

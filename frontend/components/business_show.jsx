@@ -15,6 +15,7 @@ class BusinessShow extends React.Component{
 
 
 
+
     render(){
 
         if (!this.props.business) return null;
