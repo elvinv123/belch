@@ -8,3 +8,4 @@
 
 demo_user = User.create({email: "demouser@demo.com", password: "demouser", fname:"John", lname: "Appleseed",zipcode:"95014" })
 business = Business.create({name: 'pizza', price_range: '$$$', address: 'main street', latitude: 0.0, longitude: 0.0, phone_number: '12345', hours: '24/7', website: 'pizza.com'})
+demo_review = Review.create({rating: 3.5, body: "food was good", author_id: 1, business_id: 1})

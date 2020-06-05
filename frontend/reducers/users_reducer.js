@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
-export default (state = {}, action) => {
+const usersReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, { [action.user.id]: action.user });
@@ -8,3 +8,5 @@ export default (state = {}, action) => {
             return state;
     }
 };
+
+export default usersReducer;

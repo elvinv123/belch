@@ -5,8 +5,7 @@ const Greeting = ({ currentUser, logout }) => (
     <div>
         {currentUser ? (
             <div>
-                <h1>Welcome, {currentUser.username}</h1>
-                <button onClick={logout}>Logout</button>
+                {/* <h1>Welcome, {currentUser.fname}</h1> */}
             </div>
         ) : (
                 <div>
