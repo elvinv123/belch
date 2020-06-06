@@ -53,10 +53,12 @@ class ReviewForm extends React.Component{
         return(
             <p><button className="logout"onClick={this.props.logout}>Logout</button></p>
         )}else{
-            <>
-                <button className="business-login-btn"><Link to="/login">Log in</Link></button>
-                <button className="business-signup-btn"><Link to="/signup">Sign Up</Link></button>
-            </>
+            return(
+            <div className="login-logout">
+                <Link to="/login"><button className="review-login-btn">Log in</button></Link>
+                <Link to="/signup"><button className="review-signup-btn">Sign Up</button></Link>
+            </div>
+            )
         }  
     }
 

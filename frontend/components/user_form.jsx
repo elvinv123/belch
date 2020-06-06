@@ -20,11 +20,17 @@ class UserForm extends React.Component {
                 birthDay: ""
             }
 
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+ 
+    
+    
+
     handleChange(type) {
-        return (e) => this.setState({ [type]: e.target.value });
+       
+        return (e) => this.setState( { [type]: e.target.value });
     }
 
     handleSubmit(e) {
@@ -33,20 +39,21 @@ class UserForm extends React.Component {
     }
 
     renderErrors() {
+        if(this.props.errors)
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`error-${i}`}>
                         {error}
                     </li>
-                ))[0]}
+                ))}
             </ul>
         );
     }
 
     render() {
         const { email, password, fname, lname, zipcode, birthYear, birthMonth, birthDay } = this.state;
-
+        this.props.clearErrors();
         const year = () =>{
             const years =[];
             for(let i =2020; i>=1900; i--){
@@ -153,8 +160,8 @@ class UserForm extends React.Component {
                         </span>
                         </div>
                         {this.renderErrors()}
-                        <button className="session-button"type="submit">Sign Up</button>
-                            <p className="login-link">Already on Belch? <Link to="/login">Login</Link></p>
+                        <button className="session-button"type="submit" onClick={this.props.clearErrors()}>Sign Up</button>
+                            <p className="login-link">Already on Belch? <Link to="/login" onClick={this.props.clearErrors()}>Login</Link></p>
                 </form>
                 </div>
             </div>

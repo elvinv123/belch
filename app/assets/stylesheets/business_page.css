@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+.business-page{
+    font-family: Helvetica,Arial,sans-serif;
+}
+.business-page-header{
+    height: 132px; 
+    background-color:grey;  
+}
+
+.write-review-header{
+    display: inline-block;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+
+    font-size: 16px;
+    text-align: center;
+    margin-right: 13px;
+    transform: translate(50vw, 1vw);
+}
+
+.business-login-signup{
+    transform: translate(80vw, 1vw);
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+.business-login-btn{
+    display: inline-block;
+    width: 48px;
+    background-color: #f5f5f5;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 13px;
+}
+.business-signup-btn{
+    display: inline-block;
+    width: 63px;
+    background-color: #d32324;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}
+
+.business-signup-btn:hover{
+    background-color: #bd1f1f;
+    text-decoration: none;
+}
+
+.business-login-btn:hover{
+    text-decoration: none;
+}
+
+.business-login-btn a{
+    color: black;
+}
+.business-signup-btn a{
+    color: white;
+}
+
+.business-name{
+    font-family: 'Poppins', sans-serif;
+    color: #2b273c;
+    font-size: 48px;
+}
+
+.business-page-logo{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-47vw, 0vw);
+    width: 80px;
+    height: 30px;
+    display: inline-block;
+}
