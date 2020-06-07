@@ -12,4 +12,6 @@ class Review < ApplicationRecord
     foreign_key: :business_id,
     primary_key: :id,
     class_name: :Business
+
+
 end

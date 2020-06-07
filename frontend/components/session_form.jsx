@@ -74,7 +74,7 @@ class SessionForm extends React.Component {
                                 className="password-field"
                                 onChange={this.handleChange("password")}
                             />
-                            <button type="submit" className="session-button" >Sign In</button>
+                            <button type="submit" className="session-button" onClick={this.props.clearErrors()}>Sign In</button>
                             <p className="demo-button"><button type="submit" className="session-button" onClick={this.demoLogin}> Demo User</button></p>
                             <p className="login-link">New to Belch? <Link to="/signup">Sign up</Link></p>
                         </form>

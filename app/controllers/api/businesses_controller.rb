@@ -5,4 +5,7 @@ class Api::BusinessesController < ApplicationController
         render :show
     end
 
+    # def business_params
+    #     params.require(:business).permit(:title, photos: [])
+    # end
 end
