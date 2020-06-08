@@ -11,6 +11,8 @@ class User < ApplicationRecord
     primary_key: :id,
     class_name: :Review
 
+    has_one_attached :photo
+
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)

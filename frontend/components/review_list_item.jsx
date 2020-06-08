@@ -20,14 +20,29 @@ class ReviewListItem extends React.Component{
         }
     }
 
+    profilePic(){
+        if(!this.props.author.photoUrl){
+            return(
+                <img className="profile-pic" src={window.profilepic_img_1} />
+            ) 
+        }
+        return( 
+            <img className="profile-pic" src={this.props.author.photoUrl} />
+        )
+    }
+
     render()
     {
         return(
             <div className="review-container">
             
             <section className="review-user">
-                <p className="name">{this.props.author.fname} {this.props.author.lname[0]}</p>
-                <p className="zip">{this.props.author.zipcode}</p>
+                {this.profilePic()}
+                <div className="user-info">
+                    <p className="name">{this.props.author.fname} {this.props.author.lname[0]}</p>
+                    <p className="zip">{this.props.author.zipcode}</p>
+                </div>
+                
             </section>
             <section className="review-details">
                 <p className="rating">{this.starRating()}</p>

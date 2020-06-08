@@ -298,7 +298,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _util_review_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/review_api_util */ "./frontend/util/review_api_util.js");
+/* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/business_actions */ "./frontend/actions/business_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -328,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.createReview = _util_review_api_util__WEBPACK_IMPORTED_MODULE_4__["createReview"];
+  window.fetchBusiness = Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_5__["fetchBusiness"])();
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
@@ -384,10 +387,10 @@ var App = function App(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/business_show.jsx":
-/*!***********************************************!*\
-  !*** ./frontend/components/business_show.jsx ***!
-  \***********************************************/
+/***/ "./frontend/components/business_map.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/business_map.jsx ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -395,9 +398,7 @@ var App = function App(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _review_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form_container */ "./frontend/components/review_form_container.js");
-/* harmony import */ var _review_list_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./review_list_item */ "./frontend/components/review_list_item.jsx");
+/* harmony import */ var _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/marker_manager */ "./frontend/util/marker_manager.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -419,6 +420,118 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var BusinessMap = /*#__PURE__*/function (_React$Component) {
+  _inherits(BusinessMap, _React$Component);
+
+  var _super = _createSuper(BusinessMap);
+
+  function BusinessMap() {
+    _classCallCheck(this, BusinessMap);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(BusinessMap, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // set the map to show SF
+      // const mapOptions = {
+      //     center: { lat: 37.7758, lng: -122.435 }, // this is SF
+      //     zoom: 13
+      // };
+      // // wrap this.mapNode in a Google Map
+      // this.map = new google.maps.Map(this.mapNode, mapOptions);
+      // this.map = new google.maps.Map(mapDOMNode, mapOptions);
+      // this.MarkerManager = new MarkerManager(this.map);
+      var mapOptions = {
+        center: {
+          lat: this.props.business.latitude,
+          lng: -this.props.business.longitude
+        },
+        zoom: 13,
+        disableDefaultUI: true
+      }; // wrap this.mapNode in a Google Map
+
+      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
+      this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      // if (this.props.singleBench) {
+      //     const targetBenchKey = Object.keys(this.props.benches)[0];
+      //     const targetBench = this.props.benches[targetBenchKey];
+      //     this.MarkerManager.updateMarkers([targetBench]); //grabs only that one bench
+      // } else {
+      //     this.MarkerManager.updateMarkers(this.props.benches);
+      // }
+      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
+      this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "map-container",
+        ref: function ref(map) {
+          return _this.mapNode = map;
+        }
+      });
+    }
+  }]);
+
+  return BusinessMap;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BusinessMap);
+
+/***/ }),
+
+/***/ "./frontend/components/business_show.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/business_show.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _review_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_form_container */ "./frontend/components/review_form_container.js");
+/* harmony import */ var _review_list_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./review_list_item */ "./frontend/components/review_list_item.jsx");
+/* harmony import */ var _business_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./business_map */ "./frontend/components/business_map.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -476,6 +589,27 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "hours",
+    value: function hours() {
+      var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      var hours = this.props.business.hours.split(",");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "hours"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "days"
+      }, days.map(function (day, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: index
+        }, " ", day, " ");
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "time"
+      }, hours.map(function (time, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: index
+        }, " ", time, " ");
+      })));
+    }
+  }, {
     key: "render",
     value: function render() {
       if (!this.props.business) return null;
@@ -501,18 +635,34 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "write-review-header"
       }, "Write a Review"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, this.headerPhotos()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "business-maincontent"
+        className: "business-left"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-details-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "business-name"
-      }, this.props.business.name), this.props.business.phone_number, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.props.business.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "write-a-review"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses/".concat(this.props.businessId, "/review")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.review_img_1
-      })))), this.reviewList()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "location-hours"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location & Hours"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_map__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        business: this.props.business
+      }), this.hours())), this.reviewList()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "scroll-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "website"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.website_img_1
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: this.props.business.website
+      }, this.props.business.website)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "phone"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.phone_img_1
+      }), this.props.business.phone_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "footer_img_1",
@@ -1035,17 +1185,34 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "profilePic",
+    value: function profilePic() {
+      if (!this.props.author.photoUrl) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "profile-pic",
+          src: window.profilepic_img_1
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "profile-pic",
+        src: this.props.author.photoUrl
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "review-user"
+      }, this.profilePic(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "name"
       }, this.props.author.fname, " ", this.props.author.lname[0]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "zip"
-      }, this.props.author.zipcode)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      }, this.props.author.zipcode))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "review-details"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "rating"
@@ -1930,6 +2097,68 @@ var formatDate = function formatDate(date) {
   var year = obj.getFullYear();
   return "".concat(month, "/").concat(day, "/").concat(year);
 };
+
+/***/ }),
+
+/***/ "./frontend/util/marker_manager.js":
+/*!*****************************************!*\
+  !*** ./frontend/util/marker_manager.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MarkerManager; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var MarkerManager = /*#__PURE__*/function () {
+  function MarkerManager(map) {
+    _classCallCheck(this, MarkerManager);
+
+    this.map = map;
+    this.markers = {};
+  } //...
+
+
+  _createClass(MarkerManager, [{
+    key: "updateMarkers",
+    value: function updateMarkers(businesses) {
+      var _this = this;
+
+      var businessesObj = {};
+      businesses.forEach(function (business) {
+        return businessesObj[business.id] = business;
+      });
+      businesses.filter(function (business) {
+        return !_this.markers[business.id];
+      }).forEach(function (newbusiness) {
+        return _this.createMarkerFromBusiness(newbusiness);
+      }); // Object.keys(this.markers)
+      //     .filter(businessId => !businessesObj[businessId])
+      //     .forEach((businessId) => this.removeMarker(this.markers[businessId]))  
+    }
+  }, {
+    key: "createMarkerFromBusiness",
+    value: function createMarkerFromBusiness(business) {
+      var position = new google.maps.LatLng(business.latitude, business.longitude);
+      var marker = new google.maps.Marker({
+        position: position,
+        map: this.map,
+        businessId: business.id
+      });
+      return marker;
+    }
+  }]);
+
+  return MarkerManager;
+}();
+
+
 
 /***/ }),
 

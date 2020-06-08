@@ -17,6 +17,10 @@ end
 json.authors do
     json.set! review.author.id do
       json.extract! review.author, :id, :fname, :lname, :zipcode
+      if(review.author.photo.attached?)
+        json.photoUrl  review.author.photo.service_url
+      end
     end
   end
 end
+

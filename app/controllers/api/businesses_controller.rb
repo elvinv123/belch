@@ -1,7 +1,7 @@
 class Api::BusinessesController < ApplicationController
 
     def show
-        @business = Business.find(params[:id])
+        @business = Business.with_attached_photos.find(params[:id])
         render :show
     end
 

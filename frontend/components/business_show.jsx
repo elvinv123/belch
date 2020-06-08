@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route} from 'react-router-dom';
 import ReviewFormContainer from './review_form_container';
 import ReviewListItem from './review_list_item'
+import BusinessMap from './business_map'
 
 class BusinessShow extends React.Component{
     constructor(props) {
@@ -36,6 +37,22 @@ class BusinessShow extends React.Component{
         )
     }
 
+    hours(){
+        const days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+        const hours = this.props.business.hours.split(",");
+        return(
+            <div className="hours">
+                <ul className="days">
+                    {days.map((day, index) => <li key={index}> {day} </li>)}
+                </ul>
+                <ul className="time">
+                    {hours.map((time, index)=> <li key={index}> {time} </li> )}
+                </ul>
+            </div>
+        );
+      
+    }
+
 
     render(){
 
@@ -57,17 +74,27 @@ class BusinessShow extends React.Component{
                 <section>
                     {this.headerPhotos()}
                 </section>
-                <div className="business-maincontent">
+                <div className="business-left">
                     <div className="business-details-container">
                         <h2 className="business-name">{this.props.business.name}</h2>
-                        {this.props.business.phone_number}
+                        
                         <section className="write-a-review" >
                             <Link to={`/businesses/${this.props.businessId}/review`}>
                                 <img src={window.review_img_1} />
                             </Link>
                         </section>
+                    <section className="location-hours">
+                        <h2>Location & Hours</h2>
+                        <BusinessMap business={this.props.business}/>
+                        {this.hours()}
+                    </section>
+                        
                     </div>
                 {this.reviewList()}
+                </div>
+                <div className="scroll-info">
+                    <p className="website"><img src={window.website_img_1} /><a href={this.props.business.website}>{this.props.business.website}</a></p>
+                    <p className="phone"><img src={window.phone_img_1}/>{this.props.business.phone_number}</p>
                 </div>
 
                 

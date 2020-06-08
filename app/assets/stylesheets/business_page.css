@@ -96,9 +96,7 @@
     object-fit: cover; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
 }
-.header-photo{
- 
-}
+
 
 .business-details-container{
     margin-left: 10vw;
@@ -106,3 +104,66 @@
 .write-a-review{
     width: 100px;
 }
+
+#map-container{
+    width: 316px;
+    height: 225px;
+    display: inline-block;
+}
+
+/* location & hours
+
+*/
+.location-hours{
+    border-top: 1px solid #eeeeef;
+    width:700px;
+    font-size: 14px;
+}
+.location-hours h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+.days{
+   display: inline-block; 
+   font-weight: 600;
+   margin-right: 20px;
+   margin-left: 30px;
+}
+.time{
+   display: inline-block; 
+   
+}
+.hours{
+    display:inline-block;
+    transform: translate(0vw, -6.5vw);
+}
+
+.hours ul li{
+padding: 2px
+}
+.buisness-left{
+    display:inline-block;
+}
+
+.scroll-info{
+    display: inline-block;
+    width: 382px;
+    height: 190px;
+    transform: translate(890px, -9vw);
+    border: 1px solid #eeeeef;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: .5rem;
+    align-self: flex-end;
+    border-radius: 3px;
+}
+/*
+scroll box*/
+
+.phone{
+    display: inline-block
+}
+
+
