@@ -20,10 +20,10 @@ danis_review1 = Review.create({rating: 4, body: "Best slice in town!!!", author_
 danis_review2 = Review.create({rating: 4, body: "Kinda small inside, and packed but the food was worth it", author_id: 3, business_id: 1})
 danis_review3 = Review.create({rating: 4, body: " Super good pizza :) ", author_id: 4, business_id: 1})
 
-danis.photo.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis1.jpg"), filename: "danis1.jpg")
-danis.photo.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis2.jpg"), filename: "danis2.jpg")
-danis.photo.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis3.jpg"), filename: "danis3.jpg")
-danis.photo.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis5.jpg"), filename: "danis5.jpg")
-danis.photo.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis5.jpg"), filename: "danis5.jpg")
+danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis1.jpg"), filename: "danis1.jpg")
+danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis2.jpg"), filename: "danis2.jpg")
+danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis3.jpg"), filename: "danis3.jpg")
+danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis5.jpg"), filename: "danis5.jpg")
+danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis5.jpg"), filename: "danis5.jpg")
 
 
