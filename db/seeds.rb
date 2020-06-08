@@ -13,7 +13,7 @@ user2 = User.create({email: "LeonardoT165@live.com", password: "123456", fname:"
 user3 = User.create({email: "Chuckielovesfood@gmail.com", password: "123456", fname:"Chuck", lname: "Finster",zipcode:"95014" })
 
 #businesses
-danis = Business.create({name: 'Dani\'s House of Pizza', price_range: '$', address: '81-28 Lefferts Blvd, Kew Gardens, NY 11415', latitude: 40.705850, longitude: -73.831710, phone_number: '(718)846-2849', hours: "1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm" website: 'http://danishouseofpizza.com/'})
+danis = Business.create({name: 'Dani\'s House of Pizza', price_range: '$', address: '81-28 Lefferts Blvd, Kew Gardens, NY 11415', latitude: 40.705850, longitude: -73.831710, phone_number: '(718)846-2849', hours: "1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm, 1:00 pm - 10:00 pm", website: 'http://danishouseofpizza.com/'})
 
 #reviews
 danis_review1 = Review.create({rating: 4, body: "Best slice in town!!!", author_id: 2, business_id: 1})
