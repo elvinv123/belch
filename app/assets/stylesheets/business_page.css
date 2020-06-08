@@ -147,11 +147,16 @@ padding: 2px
     display:inline-block;
 }
 
+
+/*
+scroll box*/
+
 .scroll-info{
     display: inline-block;
     width: 382px;
     height: 190px;
-    transform: translate(890px, -9vw);
+    /* transform: translate(890px, -240px); */
+    transform: translate(250%, -120%);
     border: 1px solid #eeeeef;
     position: -webkit-sticky;
     position: sticky;
@@ -159,11 +164,28 @@ padding: 2px
     align-self: flex-end;
     border-radius: 3px;
 }
-/*
-scroll box*/
 
+.phone img, .website img{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-right: 22px;
+    /* padding-left: 22px; */
+    padding-top: 12px;
+}
+.phone p, .website p{
+    display: inline-block;
+    padding-bottom: 14px;
+    padding-top: 12px;
+}
+
+.website{
+    border-bottom: 1px solid #eeeeef;
+    width: 333px;
+    margin-left: 22px;
+}
 .phone{
-    display: inline-block
+    margin-left: 22px;
 }
 
 

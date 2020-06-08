@@ -93,8 +93,15 @@ class BusinessShow extends React.Component{
                 {this.reviewList()}
                 </div>
                 <div className="scroll-info">
-                    <p className="website"><img src={window.website_img_1} /><a href={this.props.business.website}>{this.props.business.website}</a></p>
-                    <p className="phone"><img src={window.phone_img_1}/>{this.props.business.phone_number}</p>
+                    <section className="website">
+                        <img src={window.website_img_1} />
+                        <p><a href={this.props.business.website}>{this.props.business.website}</a></p>  
+                    </section>
+                    <section className="phone">
+                        <img src={window.phone_img_1} />
+                        <p>{this.props.business.phone_number}</p>
+                    </section>
+                    
                 </div>
 
                 
