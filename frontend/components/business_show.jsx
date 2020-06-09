@@ -8,7 +8,6 @@ class BusinessShow extends React.Component{
     constructor(props) {
         super(props)
         this.state = this.props.business;
-        this
     }
 
     componentDidMount(){
@@ -53,6 +52,23 @@ class BusinessShow extends React.Component{
       
     }
 
+    rating(){
+        const rating = Math.round(parseFloat(this.props.business.average_rating))
+
+        switch(rating){
+            case 5:
+                return <img className="rating" src={window.ratingfive_img_1} />;
+            case 4:
+                return <img className="rating" src={window.ratingfour_img_1} />;
+            case 3:
+                return <img className="ratingt" src={window.ratingthree_img_1} />;
+            case 2:
+                return <img className="rating" src={window.ratingtwo_img_1} />;
+            case 1:
+                return <img className="rating" src={window.ratingone_img_1} />;
+        }
+    }
+
 
     render(){
 
@@ -77,11 +93,20 @@ class BusinessShow extends React.Component{
                 <div className="business-left">
                     <div className="business-details-container">
                         <h2 className="business-name">{this.props.business.name}</h2>
+                        <div className="rating-reviews">
+                            {this.rating()}
+                            <p>{Object.values(this.props.business.reviews).length} reviews</p>
+                        </div>
                         
-                        <section className="write-a-review" >
-                            <Link to={`/businesses/${this.props.businessId}/review`}>
-                                <img src={window.review_img_1} />
-                            </Link>
+                        <section className="buiness-buttons">
+                            <section className="write-a-review" >
+                                <Link to={`/businesses/${this.props.businessId}/review`}>
+                                    <img src={window.review_img_1} />
+                                </Link>
+                            </section>
+                            <button className="add-photo"><img src={window.camera_img_1} /><p>Add Photo</p></button>
+                            <button className="share"><img src={window.share_img_1} /><p>Share</p></button>
+                            <button className="save"><img src={window.save_img_1} /><p>Save</p></button> 
                         </section>
                     <section className="location-hours">
                         <h2>Location & Hours</h2>
@@ -90,6 +115,21 @@ class BusinessShow extends React.Component{
                     </section>
                         
                     </div>
+
+                    <section className="recommended-reviews">
+                        <h2>Recommended Reviews</h2>
+                        <div className="your-trust">
+                            <img src={window.small_logo_img_1}/>
+                            <p><strong>Your trust is our top concern,</strong> so businesses can't pay to alter or remove their reviews.</p>
+                            <a href="https://www.yelp.com/advertiser_faq">Learn More</a>
+                        </div>
+                        <img src={window.review_rating_user_img_1}/>
+                        <div className="start-review">
+                            <img src={window.review_rating_img_1}/>
+                            <p><Link to={`/businesses/${this.props.businessId}/review`}>Start your review of <strong>{this.props.business.name}</strong></Link></p>
+                        </div>
+                    </section>
+
                 {this.reviewList()}
                 </div>
                 <div className="scroll-info">
@@ -101,7 +141,14 @@ class BusinessShow extends React.Component{
                         <img src={window.phone_img_1} />
                         <p>{this.props.business.phone_number}</p>
                     </section>
-                    
+                    <section className="directions">
+                        <img src={window.directions_img_1} />
+                        <a>Get Directions</a>
+                    </section>
+                    <section className="message">
+                        <img src={window.message_img_1} />
+                        <a>Message the Business</a>
+                    </section>
                 </div>
 
                 

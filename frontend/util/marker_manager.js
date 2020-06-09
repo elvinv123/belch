@@ -15,10 +15,12 @@ export default class MarkerManager {
             .filter(business => !this.markers[business.id])
             .forEach(newbusiness => this.createMarkerFromBusiness(newbusiness))
 
-        // Object.keys(this.markers)
-        //     .filter(businessId => !businessesObj[businessId])
-        //     .forEach((businessId) => this.removeMarker(this.markers[businessId]))  
+        Object.keys(this.markers)
+            .filter(businessId => !businessesObj[businessId])
+            .forEach((businessId) => this.removeMarker(this.markers[businessId])) 
+
     }
+
 
     createMarkerFromBusiness(business) {
         const position = new google.maps.LatLng(business.latitude, business.longitude);

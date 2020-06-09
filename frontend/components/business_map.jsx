@@ -21,11 +21,10 @@ class BusinessMap extends React.Component{
             zoom: 13,
             disableDefaultUI: true
         };
-
         // wrap this.mapNode in a Google Map
         this.map = new google.maps.Map(this.mapNode, mapOptions);
         this.MarkerManager = new MarkerManager(this.map);
-        this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map)
+        this.MarkerManager.createMarkerFromBusiness(this.props.business)
     }
 
     componentDidUpdate() {
@@ -36,9 +35,9 @@ class BusinessMap extends React.Component{
         // } else {
         //     this.MarkerManager.updateMarkers(this.props.benches);
         // }
-        this.map = new google.maps.Map(this.mapNode, mapOptions);
-        this.MarkerManager = new MarkerManager(this.map);
-        this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map)
+        // this.map = new google.maps.Map(this.mapNode, mapOptions);
+        // this.MarkerManager = new MarkerManager(this.map);
+        // this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map)
 
     }
 

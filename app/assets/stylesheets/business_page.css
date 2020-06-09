@@ -101,9 +101,6 @@
 .business-details-container{
     margin-left: 10vw;
 }
-.write-a-review{
-    width: 100px;
-}
 
 #map-container{
     width: 316px;
@@ -118,6 +115,7 @@
     border-top: 1px solid #eeeeef;
     width:700px;
     font-size: 14px;
+    margin-top: 13px;
 }
 .location-hours h2{
     font-size: 20px;
@@ -147,6 +145,24 @@ padding: 2px
     display:inline-block;
 }
 
+/* rating reviews*/
+
+.rating-reviews{
+    color: #757280;
+    font-size: 16px;
+}
+
+.rating{
+    width: 178px;
+    /* height: 21px; */
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.rating-reviews p{
+    display: inline-block;
+    transform: translate(0vw, -10px);
+}
 
 /*
 scroll box*/
@@ -154,7 +170,7 @@ scroll box*/
 .scroll-info{
     display: inline-block;
     width: 382px;
-    height: 190px;
+    height: 95x;
     /* transform: translate(890px, -240px); */
     transform: translate(250%, -120%);
     border: 1px solid #eeeeef;
@@ -163,9 +179,10 @@ scroll box*/
     bottom: .5rem;
     align-self: flex-end;
     border-radius: 3px;
+    font-size: 14px;
 }
 
-.phone img, .website img{
+.phone img, .website img, .directions img, .message img {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -173,13 +190,14 @@ scroll box*/
     /* padding-left: 22px; */
     padding-top: 12px;
 }
-.phone p, .website p{
+.phone p, .website p, .directions a, .message a{
     display: inline-block;
     padding-bottom: 14px;
     padding-top: 12px;
+    transform: translate(0, -4px);
 }
 
-.website{
+.website, .phone, .directions, .message{
     border-bottom: 1px solid #eeeeef;
     width: 333px;
     margin-left: 22px;
@@ -188,4 +206,122 @@ scroll box*/
     margin-left: 22px;
 }
 
+.website p a, .directions a, .message a{
+    color: #00838f;
+}
 
+/* business buttons */
+
+.add-photo, .share, .save{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+    margin-right: 10px;
+    transform: translate(80px, -14.5px);
+}
+
+.write-a-review{
+    width: 100px;
+    display: inline-block;
+}
+
+.add-photo p, .share p, .save p{
+    display: inline-block
+}
+
+
+.add-photo img, .share img, .save img{
+    display: inline-block;
+    width: 17px;
+    padding-right: 3px;
+}
+
+.save img{
+    height:17px;
+}
+
+.add-photo:hover, .share:hover, .save:hover{
+    background-color: #ccc;
+    text-decoration: none;
+}
+
+/* Recommended Reviews */
+.recommended-reviews{
+    border-top: 1px solid #ccc;
+    padding-top: 40px;
+    width: 700px;
+    margin-left: 10vw;
+
+}
+.recommended-reviews h2{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.recommended-reviews img{
+    width: 148px;
+    display: inline-block;
+    margin-right: 81px;;
+}
+
+.start-review{
+    border: 1px solid #eeeeef;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    width: 466px;
+    height: 150px;
+    font-size: 14px;
+    display: inline-block;
+    
+}
+.start-review img{
+    padding-bottom: 22px;
+    transform: translate(145px, 30px);
+    width: 180px;
+}
+
+.start-review p{
+    color: black;
+    border-top: 1px solid #eeeeef;
+    width: 415px;
+    padding-top: 22px;
+    transform: translate(25px, 10px);
+    text-align: center;
+}
+
+.start-review p a{
+    color: black;
+}
+
+/* your trust*/
+.your-trust{
+    height: 75px;
+    width: 694px;
+    border: 1px solid #eeeeef;
+    background-color: #f4f4f4;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.your-trust p{
+    transform: translate(-45px,13px);
+    display: inline-block;
+}
+
+.your-trust img{
+    width: 19px;
+    display: inline-block;
+    transform: translate(20px,23px);
+}
+
+
+.your-trust a{
+    color: #00838f;
+    transform: translate(55px,13px);
+    display: block;
+}
+.your-trust p strong, p a strong{
+    font-weight: 600;
+}
