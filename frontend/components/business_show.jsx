@@ -29,6 +29,7 @@ class BusinessShow extends React.Component{
     }
 
     headerPhotos(){
+        if (this.props.business.photoUrls)
         return (
             <section className="header-photos">
                 {this.props.business.photoUrls.slice(0,4).map((url, index)=> <img key={index} className="header-photo" src={url}/>)}

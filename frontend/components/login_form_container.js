@@ -5,11 +5,14 @@ import { login, clearErrors } from "../actions/session_actions";
 const mapStateToProps = (state, ownProps) => ({
     errors: state.errors.session,
     formType: "login",
+    demo: { email: "demouser@demo.com", password: "demouser"}
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, ownProps) => {
+    debugger
+    return{
     processForm: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(clearErrors())
-});
+};}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

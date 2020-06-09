@@ -24,10 +24,13 @@ const clearSessionErrors = () => ({
     errors: [],
 });
 
-export const login = (user) => (dispatch) =>
-    APIUtil.login(user)
-        .then((currentUser) => dispatch(receiveCurrentUser(currentUser)))
-        .fail((errors) => dispatch(receiveSessionErrors(errors.responseJSON)));
+export const login = (user) => (dispatch) =>{
+    debugger
+    return APIUtil.login(user)
+        .then((currentUser) => { 
+            debugger 
+            return dispatch(receiveCurrentUser(currentUser))})
+        .fail((errors) => dispatch(receiveSessionErrors(errors.responseJSON)));}
 
 export const logout = () => (dispatch) =>
     APIUtil.logout()

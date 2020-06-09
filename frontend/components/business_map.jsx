@@ -28,16 +28,7 @@ class BusinessMap extends React.Component{
     }
 
     componentDidUpdate() {
-        // if (this.props.singleBench) {
-        //     const targetBenchKey = Object.keys(this.props.benches)[0];
-        //     const targetBench = this.props.benches[targetBenchKey];
-        //     this.MarkerManager.updateMarkers([targetBench]); //grabs only that one bench
-        // } else {
-        //     this.MarkerManager.updateMarkers(this.props.benches);
-        // }
-        // this.map = new google.maps.Map(this.mapNode, mapOptions);
-        // this.MarkerManager = new MarkerManager(this.map);
-        // this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map)
+
 
     }
 

@@ -12,7 +12,7 @@ class BusinessIndex extends React.Component{
         if (!this.props.businesses) return null;
         return(
             <>
-            hello{this.props.businesses[1].name}
+            hello
             </>
         )
     }

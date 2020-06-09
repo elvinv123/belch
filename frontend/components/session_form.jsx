@@ -20,12 +20,17 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state);
+        debugger
+        const user = Object.assign({}, this.state)
+        this.props.processForm(user);
     }
 
     demoLogin(e) {
-        this.setState({ email: "demouser@demo.com", password: "demouser"})
-        this.props.processForm(this.state);
+        // const demo = { email: "demouser@demo.com", password: "demouser"}
+        this.setState(this.props.demo)
+        // debugger
+        // this.props.processForm(this.state).then(console.log("good"));
+        // this.handleChange(this.state);
     }
 
     renderErrors() {
@@ -75,7 +80,7 @@ class SessionForm extends React.Component {
                                 onChange={this.handleChange("password")}
                             />
                             <button type="submit" className="session-button" onClick={this.props.clearErrors()}>Sign In</button>
-                            <p className="demo-button"><button type="submit" className="session-button" onClick={this.demoLogin}> Demo User</button></p>
+                            <p className="demo-button"><button type="submit" className="session-button" onClick={() => this.demoLogin()}> Demo User</button></p>
                             <p className="login-link">New to Belch? <Link to="/signup">Sign up</Link></p>
                         </form>
                     </div>

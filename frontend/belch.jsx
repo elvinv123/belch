@@ -7,6 +7,8 @@ import {fetchBusiness} from "./actions/business_actions"
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    const root = document.getElementById("root");
+    debugger
     let store;
     if (window.currentUser) {
         const preloadedState = {
@@ -21,8 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
 
-    // const store = configureStore();
-    const root = document.getElementById("root");
+    
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.createReview = createReview;

@@ -264,7 +264,9 @@ var clearSessionErrors = function clearSessionErrors() {
 
 var login = function login(user) {
   return function (dispatch) {
+    debugger;
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (currentUser) {
+      debugger;
       return dispatch(receiveCurrentUser(currentUser));
     }).fail(function (errors) {
       return dispatch(receiveSessionErrors(errors.responseJSON));
@@ -325,6 +327,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 document.addEventListener("DOMContentLoaded", function () {
+  var root = document.getElementById("root");
+  debugger;
   var store;
 
   if (window.currentUser) {
@@ -340,10 +344,8 @@ document.addEventListener("DOMContentLoaded", function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  } // const store = configureStore();
+  }
 
-
-  var root = document.getElementById("root");
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.createReview = _util_review_api_util__WEBPACK_IMPORTED_MODULE_4__["createReview"];
@@ -385,7 +387,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    exact: true,
+    path: "/",
+    component: _business_index_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
     exact: true,
     path: "/businesses/:businessId",
     component: _business_show_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -399,11 +405,7 @@ var App = function App(props) {
     exact: true,
     path: "/businesses/:businessId/review",
     component: _review_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
-    exact: true,
-    path: "/",
-    component: _business_index_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -465,7 +467,7 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.props.businesses) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "hello", this.props.businesses[1].name);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "hello");
     }
   }]);
 
@@ -493,7 +495,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
-  debugger;
   return {
     businesses: Object.values(state.entities.businesses)
   };
@@ -586,17 +587,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {// if (this.props.singleBench) {
-      //     const targetBenchKey = Object.keys(this.props.benches)[0];
-      //     const targetBench = this.props.benches[targetBenchKey];
-      //     this.MarkerManager.updateMarkers([targetBench]); //grabs only that one bench
-      // } else {
-      //     this.MarkerManager.updateMarkers(this.props.benches);
-      // }
-      // this.map = new google.maps.Map(this.mapNode, mapOptions);
-      // this.MarkerManager = new MarkerManager(this.map);
-      // this.MarkerManager.createMarkerFromBusiness(this.props.business).setMap(this.map)
-    }
+    value: function componentDidUpdate() {}
   }, {
     key: "render",
     value: function render() {
@@ -698,7 +689,7 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "headerPhotos",
     value: function headerPhotos() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+      if (this.props.business.photoUrls) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "header-photos"
       }, this.props.business.photoUrls.slice(0, 4).map(function (url, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -989,11 +980,16 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors.session,
-    formType: "login"
+    formType: "login",
+    demo: {
+      email: "demouser@demo.com",
+      password: "demouser"
+    }
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  debugger;
   return {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
@@ -1530,16 +1526,17 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.processForm(this.state);
+      debugger;
+      var user = Object.assign({}, this.state);
+      this.props.processForm(user);
     }
   }, {
     key: "demoLogin",
     value: function demoLogin(e) {
-      this.setState({
-        email: "demouser@demo.com",
-        password: "demouser"
-      });
-      this.props.processForm(this.state);
+      // const demo = { email: "demouser@demo.com", password: "demouser"}
+      this.setState(this.props.demo); // debugger
+      // this.props.processForm(this.state).then(console.log("good"));
+      // this.handleChange(this.state);
     }
   }, {
     key: "renderErrors",
@@ -1553,6 +1550,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var _this$state = this.state,
           email = _this$state.email,
           password = _this$state.password;
@@ -1603,7 +1602,9 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "session-button",
-        onClick: this.demoLogin
+        onClick: function onClick() {
+          return _this3.demoLogin();
+        }
       }, " Demo User")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "login-link"
       }, "New to Belch? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -2165,6 +2166,7 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      debugger;
       return {
         id: action.user.id
       };
@@ -2417,6 +2419,7 @@ var Auth = function Auth(_ref) {
       exact = _ref.exact,
       path = _ref.path,
       Component = _ref.component;
+  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: path,
     exact: exact,
@@ -2460,6 +2463,7 @@ var signup = function signup(user) {
   });
 };
 var login = function login(user) {
+  debugger;
   return $.ajax({
     url: "/api/session",
     method: "POST",
@@ -3611,20 +3615,6 @@ module.exports = hoistNonReactStatics;
 
 /***/ }),
 
-/***/ "./node_modules/isarray/index.js":
-/*!***************************************!*\
-  !*** ./node_modules/isarray/index.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/mini-create-react-context/dist/esm/index.js":
 /*!******************************************************************!*\
   !*** ./node_modules/mini-create-react-context/dist/esm/index.js ***!
@@ -3930,7 +3920,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
+var isarray = __webpack_require__(/*! isarray */ "./node_modules/path-to-regexp/node_modules/isarray/index.js")
 
 /**
  * Expose `pathToRegexp`.
@@ -4356,6 +4346,20 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/path-to-regexp/node_modules/isarray/index.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/path-to-regexp/node_modules/isarray/index.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
