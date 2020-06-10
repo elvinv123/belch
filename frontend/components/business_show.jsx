@@ -28,8 +28,22 @@ class BusinessShow extends React.Component{
         )
     }
 
+    logged_in() {
+        if (this.props.currentUser) {
+            return (
+                <p><button className="business-logout" onClick={this.props.logout}>Logout</button></p>
+            )
+        } else {
+            return (
+                <div className="business-login-signup">
+                    <Link to="/login"><button className="business-login-btn">Log in</button></Link>
+                    <Link to="/signup"><button className="business-signup-btn">Sign Up</button></Link>
+                </div>
+            )
+        }
+    }
+
     headerPhotos(){
-        if (this.props.business.photoUrls)
         return (
             <section className="header-photos">
                 {this.props.business.photoUrls.slice(0,4).map((url, index)=> <img key={index} className="header-photo" src={url}/>)}
@@ -80,10 +94,7 @@ class BusinessShow extends React.Component{
             <div className="business-page">
                 <div className="business-page-header">
                     <img className="business-page-logo" src={window.logo_img_1} />
-                    <section className="business-login-signup">
-                        <Link to="/login"><button className="business-login-btn">Log in</button></Link>
-                        <Link to="/signup"><button className="business-signup-btn">Sign Up</button></Link>
-                    </section>
+                        {this.logged_in()}
                     <Link to={`/businesses/${this.props.businessId}/review`}>
                         <button className="write-review-header">Write a Review</button>
                     </Link>

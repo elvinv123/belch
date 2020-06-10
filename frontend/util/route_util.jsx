@@ -3,7 +3,6 @@ import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Auth = ({ loggedIn, exact, path, component: Component }) => {
-debugger
     return <Route
         path={path}
         exact={exact}

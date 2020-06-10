@@ -25,10 +25,9 @@ const clearSessionErrors = () => ({
 });
 
 export const login = (user) => (dispatch) =>{
-    debugger
     return APIUtil.login(user)
         .then((currentUser) => { 
-            debugger 
+             
             return dispatch(receiveCurrentUser(currentUser))})
         .fail((errors) => dispatch(receiveSessionErrors(errors.responseJSON)));}
 

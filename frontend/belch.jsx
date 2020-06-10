@@ -8,7 +8,6 @@ import {fetchBusiness} from "./actions/business_actions"
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
-    debugger
     let store;
     if (window.currentUser) {
         const preloadedState = {

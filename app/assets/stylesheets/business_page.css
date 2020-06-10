@@ -22,6 +22,11 @@
     transform: translate(55vw, 1vw);
 }
 
+.business-logout{
+        transform: translate(78.3vw, 1vw);
+        display: inline-block;
+}
+
 .business-login-signup{
     transform: translate(78.3vw, 1vw);
     position: relative;
@@ -42,7 +47,7 @@
     text-align: center;
     margin-right: 13px;
 }
-.business-signup-btn{
+.business-signup-btn, .business-logout{
     display: inline-block;
     width: 63px;
     background-color: #f43939;
@@ -55,7 +60,7 @@
     text-align: center;
 }
 
-.business-signup-btn:hover{
+.business-signup-btn:hover, .business-logout:hover{
     background-color: #bd1f1f;
     text-decoration: none;
 }
