@@ -8,25 +8,28 @@ class BusinessShow extends React.Component{
     constructor(props) {
         super(props)
         this.state = this.props.business;
+        debugger
     }
 
     componentDidMount(){
+        debugger
         this.props.fetchBusiness(this.props.match.params.businessId)
     }
 
-    reviewList(){
-
-        if (!this.props.business) return null;
-        return(
-            <ul>
-                {
-                Object.values(this.props.business.reviews).map(review =>
-                    <ReviewListItem key={review.id} review={review} author={this.props.business.authors[review.author_id]}/>
-                )
-                }
-            </ul>
-        )
-    }
+    // reviewList(){
+    //     debugger
+    //     if (!this.props.business) return null;
+    //     return(
+    //         <ul>
+    //             {
+    //             Object.values(this.props.business.reviews).map(review => {
+    //                 debugger
+    //              return <ReviewListItem key={review.id} review={review} author={this.props.business.authors[review.author_id]}/>}
+    //             )
+    //             }
+    //         </ul>
+    //     )
+    // }
 
     logged_in() {
         if (this.props.currentUser) {
@@ -87,9 +90,11 @@ class BusinessShow extends React.Component{
 
 
     render(){
+        debugger
 
-        if (!this.props.business) return null;
-
+        if (this.props.business.authors){
+            debugger
+            const authors = this.props.business.authors
         return (
            
             <div className="business-page">
@@ -143,7 +148,16 @@ class BusinessShow extends React.Component{
                         </div>
                     </section>
 
-                {this.reviewList()}
+                    <ul>
+                        {
+                            Object.values(this.props.business.reviews).map(review => {
+                                debugger
+                                return <ReviewListItem key={review.id} review={review} author={authors[review.author_id]} />
+                            }
+                            )
+                        }
+                    </ul>
+
                 </div>
                 <div className="scroll-info">
                     <section className="website">
@@ -169,7 +183,9 @@ class BusinessShow extends React.Component{
                     <img className="footer_img_1" src={window.footer_img_1} />
                 </div>
             </div>
-        )
+        )}else{
+            return null;
+        }
     }
 }
 
