@@ -11,7 +11,7 @@ class BusinessShow extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchBusiness(this.props.businessId)
+        this.props.fetchBusiness(this.props.match.params.businessId)
     }
 
     reviewList(){
@@ -68,6 +68,7 @@ class BusinessShow extends React.Component{
     }
 
     rating(){
+        
         const rating = Math.round(parseFloat(this.props.business.average_rating))
 
         switch(rating){

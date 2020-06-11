@@ -1,11 +1,26 @@
 import React from 'react';
-import { Link, Redirect } from "react-router-dom"
-import HotNewBusinesses from "./hot_new_businesses"
+import { Link } from "react-router-dom"
 import HotNewBusiness from './hot_new_businesses';
 
 class BusinessIndex extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = {
+            category: ""
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        this.props.history.push(`/businesses/search/${this.state.category}`);
+    }
+
+    handleChange(type) {
+        return (e) => this.setState({ [type]: e.target.value });
     }
 
     componentDidMount(){
@@ -43,14 +58,19 @@ class BusinessIndex extends React.Component{
 
     render(){
         if (!this.props.businesses) return null;
+        const { category } = this.state;
         return(
             <div className="splash-page">
             <div className="splash-header">
                     {this.logged_in()}
                     <img className="splash-page-logo" src={window.logo_img_1} />
-                    <form className="search-bar">
-                        <input type="text"/>
-                        <button></button>
+                    <form className="search-bar" onSubmit={this.handleSubmit}>
+                        <input type="text"
+                            value={category}
+                            placeholder="Email"
+                            onChange={this.handleChange("category")}
+                        />
+                        <button type="submit"></button>
                     </form>
             </div>
             <div className="splash-main-content">

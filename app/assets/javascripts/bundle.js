@@ -428,6 +428,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hot_new_businesses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hot_new_businesses */ "./frontend/components/hot_new_businesses.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -452,19 +454,40 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(BusinessIndex, _React$Component);
 
   var _super = _createSuper(BusinessIndex);
 
   function BusinessIndex(props) {
+    var _this;
+
     _classCallCheck(this, BusinessIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      category: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(BusinessIndex, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.history.push("/businesses/search/".concat(this.state.category));
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(type) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchBusinesses();
@@ -483,13 +506,13 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "logged_in",
     value: function logged_in() {
-      var _this = this;
+      var _this3 = this;
 
       if (this.props.currentUser) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "splash-logout-btn",
           onClick: function onClick() {
-            return _this.props.logout();
+            return _this3.props.logout();
           }
         }, "Logout"));
       } else {
@@ -510,6 +533,7 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       if (!this.props.businesses) return null;
+      var category = this.state.category;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash-page"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -518,10 +542,16 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
         className: "splash-page-logo",
         src: window.logo_img_1
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "search-bar"
+        className: "search-bar",
+        onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        type: "text",
+        value: category,
+        placeholder: "Email",
+        onChange: this.handleChange("category")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash-main-content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Belch New York"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "hot-new"
@@ -645,27 +675,38 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
       // this.MarkerManager = new MarkerManager(this.map);
       var mapOptions = {
         center: {
-          lat: this.props.business.latitude,
-          lng: -this.props.business.longitude
+          lat: 40.7128,
+          lng: -74.0060
         },
-        zoom: 13,
+        zoom: 12,
         disableDefaultUI: true
       }; // wrap this.mapNode in a Google Map
 
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
-      this.MarkerManager.createMarkerFromBusiness(this.props.business);
+
+      if (this.props.business) {
+        this.MarkerManager.createMarkerFromBusiness(this.props.business);
+      } else {
+        this.MarkerManager.updateMarkers(this.props.businesses);
+      }
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {}
+    key: "mapId",
+    value: function mapId() {
+      if (this.props.business) {
+        return 'map-container';
+      } else {
+        return 'map-container-search';
+      }
+    }
   }, {
     key: "render",
     value: function render() {
       var _this = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "map-container",
+        id: this.mapId(),
         ref: function ref(map) {
           return _this.mapNode = map;
         }
@@ -741,7 +782,7 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
   _createClass(BusinessShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchBusiness(this.props.businessId);
+      this.props.fetchBusiness(this.props.match.params.businessId);
     }
   }, {
     key: "reviewList",
@@ -1605,7 +1646,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _search_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_index_item */ "./frontend/components/search_index_item.jsx");
+/* harmony import */ var _business_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./business_map */ "./frontend/components/business_map.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1630,18 +1675,42 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var Search = /*#__PURE__*/function (_React$Component) {
   _inherits(Search, _React$Component);
 
   var _super = _createSuper(Search);
 
   function Search(props) {
+    var _this;
+
     _classCallCheck(this, Search);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      category: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Search, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.history.push("/businesses/search/".concat(this.state.category));
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(type) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchBusinesses({
@@ -1652,7 +1721,9 @@ var Search = /*#__PURE__*/function (_React$Component) {
     key: "businessItems",
     value: function businessItems() {
       if (!this.props.businesses) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.businesses).map(function (business) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "search-results"
+      }, Object.values(this.props.businesses).map(function (business) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: business.id,
           business: business
@@ -1660,9 +1731,61 @@ var Search = /*#__PURE__*/function (_React$Component) {
       }));
     }
   }, {
+    key: "logged_in",
+    value: function logged_in() {
+      if (this.props.currentUser) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "search-logout",
+          onClick: this.props.logout
+        }, "Logout"));
+      } else {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-login-signup"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "/login"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "search-login-btn"
+        }, "Log in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "/signup"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "search-signup-btn"
+        }, "Sign Up")));
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.businessItems());
+      if (!this.props.businesses) return null;
+      var category = this.state.category;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-page"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-page-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "search-page-logo",
+        src: window.logo_img_1
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "search-search-bar",
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: category,
+        placeholder: "Email",
+        onChange: this.handleChange("category")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit"
+      })), this.logged_in(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_map__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        businesses: this.props.businesses
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "search-page-maincontent"
+      }, this.businessItems()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "footer_img_1",
+        src: window.footer_img_1
+      })));
     }
   }]);
 
@@ -1724,6 +1847,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1748,6 +1872,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var SearchIndexItem = /*#__PURE__*/function (_React$Component) {
   _inherits(SearchIndexItem, _React$Component);
 
@@ -1767,31 +1892,31 @@ var SearchIndexItem = /*#__PURE__*/function (_React$Component) {
       switch (rating) {
         case 5:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "hot-rating",
+            className: "search-rating",
             src: window.fivestar_img_1
           });
 
         case 4:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "hot-rating",
+            className: "search-rating",
             src: window.fourstar_img_1
           });
 
         case 3:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "hot-rating",
+            className: "search-rating",
             src: window.threestar_img_1
           });
 
         case 2:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "hot-rating",
+            className: "search-rating",
             src: window.twostar_img_1
           });
 
         case 1:
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            className: "hot-rating",
+            className: "search-rating",
             src: window.onestar_img_1
           });
       }
@@ -1800,15 +1925,17 @@ var SearchIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "hot-item"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+        className: "search-item"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses/".concat(this.props.business.id)
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "hot-item-pic",
+        className: "search-item-pic",
         src: this.props.business.photoUrls[0]
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "business-search-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses/".concat(this.props.business.id)
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.business.name)), this.starRating(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.address));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.business.name)), this.starRating(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.address)));
     }
   }]);
 
@@ -1891,7 +2018,6 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      debugger;
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
     }
@@ -2709,20 +2835,25 @@ var MarkerManager = /*#__PURE__*/function () {
     value: function updateMarkers(businesses) {
       var _this = this;
 
-      var businessesObj = {};
-      businesses.forEach(function (business) {
-        return businessesObj[business.id] = business;
-      });
-      businesses.filter(function (business) {
-        return !_this.markers[business.id];
-      }).forEach(function (newbusiness) {
-        return _this.createMarkerFromBusiness(newbusiness);
-      });
-      Object.keys(this.markers).filter(function (businessId) {
-        return !businessesObj[businessId];
-      }).forEach(function (businessId) {
-        return _this.removeMarker(_this.markers[businessId]);
-      });
+      var businessesObj = {}; // businesses.values.forEach(business => businessesObj[business.id] = business);
+      // businesses
+      //     .filter(business => !this.markers[business.id])
+      //     .forEach(newbusiness => this.createMarkerFromBusiness(newbusiness))
+      // Object.keys(this.markers)
+      //     .filter(businessId => !businessesObj[businessId])
+      //     .forEach((businessId) => this.removeMarker(this.markers[businessId])) 
+
+      Object.values(businesses).forEach(function (business) {
+        return _this.createMarkerFromBusiness(business);
+      }); // for (i = 0; i < markers.length; i++) {
+      //     var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+      //     bounds.extend(position);
+      //     marker = new google.maps.Marker({
+      //         position: position,
+      //         map: map,
+      //         title: markers[i][0]
+      //     });
+      // }
     }
   }, {
     key: "createMarkerFromBusiness",

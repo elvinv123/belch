@@ -17,24 +17,34 @@ class BusinessMap extends React.Component{
         // this.MarkerManager = new MarkerManager(this.map);
 
         const mapOptions = {
-            center: { lat: this.props.business.latitude, lng: -this.props.business.longitude },
-            zoom: 13,
+            center: { lat: 40.7128, lng: -74.0060 },
+            zoom: 12,
             disableDefaultUI: true
         };
         // wrap this.mapNode in a Google Map
         this.map = new google.maps.Map(this.mapNode, mapOptions);
         this.MarkerManager = new MarkerManager(this.map);
-        this.MarkerManager.createMarkerFromBusiness(this.props.business)
+
+        if(this.props.business){
+    
+            this.MarkerManager.createMarkerFromBusiness(this.props.business)
+        }else{
+    
+            this.MarkerManager.updateMarkers(this.props.businesses)
+        }
     }
 
-    componentDidUpdate() {
-
-
+    mapId(){
+        if (this.props.business) {
+            return 'map-container';
+        } else {
+            return 'map-container-search';
+        }
     }
 
     render(){
         return(
-            <div id='map-container' ref={map => this.mapNode = map}>
+            <div id={this.mapId()} ref={map => this.mapNode = map}>
 
             </div>
         )

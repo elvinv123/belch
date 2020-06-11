@@ -1,0 +1,129 @@
+/* header */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+.search-page{
+    font-family: Helvetica,Arial,sans-serif;
+}
+.search-page-header{
+    height: 132px; 
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+}
+
+.search-logout{
+    transform: translate(78.3vw, 1vw);
+    display: inline-block;
+}
+
+.search-login-signup{
+    transform: translate();
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+.search-login-btn{
+    display: inline-block;
+    width: 48px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    margin-right: 13px;
+}
+.search-signup-btn, .search-logout{
+    display: inline-block;
+    width: 63px;
+    background-color: #f43939;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 16px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+}
+
+.search-signup-btn:hover, .search-logout:hover{
+    background-color: #bd1f1f;
+    text-decoration: none;
+}
+
+.search-login-btn:hover{
+    text-decoration: none;
+}
+
+.search-login-btn a{
+    color: black;
+}
+.search-signup-btn a{
+    color: white;
+}
+
+.search-page-logo{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate();
+    width: 80px;
+    height: 30px;
+    display: inline-block;
+}
+
+.search-search-bar{
+    display: inline-block;
+}
+
+
+.search-search-bar input{
+    width: 481px;
+    height: 45px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 4px 0px 0px 4px;
+}
+.search-search-bar button{
+    height: 45px;
+    width: 64px;
+    background-color:#f43939;
+    display: inline-block;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.search-search-bar button:hover{
+    background-color: #bd1f1f;
+}
+
+.search-search-bar input{
+    transform: translate(0px, 0px);
+
+}
+ .search-search-bar button{
+    transform: translate(0px, 0px);
+ }
+
+/* main content */
+
+.search-page-maincontent{
+    display: inline-block
+}
+
+ .search-results{
+     display:inline-block;
+ }
+
+
+#map-container-search{
+    width: 25vw;
+    height: 87vh;
+    transform: translate(74.8vw, 69px);
+    position: fixed;
+
+}
