@@ -1,12 +1,12 @@
 /* header */
 
 .splash-logout, .splash-logout-btn{
-    transform: translate(1025px, 31px);
+    transform: translate(85vw, 31px);
     position: absolute;
     display: inline-block;
 }
 .splash-logout-btn{
-    transform: translate(1200px, 31px);
+    transform: translate(85vw, 31px);
     position: absolute;
 }
 .splash-login-btn, .splash-logout-btn{
@@ -64,6 +64,7 @@
     background-image: url("https://belch-seeds.s3.us-east-2.amazonaws.com/bakery-2531504_1920+(1).jpg");
     background-size: contain;
     background-size: cover;
+    width: 100vw;
 }
 
 .splash-page-logo{
@@ -95,11 +96,13 @@
 }
 
 .search-bar input{
-    transform: translate(447px, 190px);
+    transform: translate(32vw, 190px);
+    position: relative;
 
 }
  .search-bar button{
-    transform: translate(447px, 208px);
+    transform: translate(32vw, 208px);
+    position: relative;
  }
 
 /* main page */
@@ -115,7 +118,7 @@
     margin-left: 240px;
 }
 .hot-new ul{
-    margin-left: 224px;
+    margin-left: 16%;
 }
 
 .hot-new h3{
