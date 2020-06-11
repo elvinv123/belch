@@ -3,6 +3,10 @@ import { formatDate } from '../util/format_date_util';
 import { render } from 'react-dom';
 
 class ReviewListItem extends React.Component{
+    constructor(props){
+        super(props);
+        debugger
+    }
   
     starRating(){
         let rating =this.props.review.rating;
@@ -20,24 +24,29 @@ class ReviewListItem extends React.Component{
         }
     }
 
-    profilePic(){
-        if(!this.props.author.photoUrl){
-            return(
-                <img className="profile-pic" src={window.profilepic_img_1} />
-            ) 
-        }
-        return( 
-            <img className="profile-pic" src={this.props.author.photoUrl} />
-        )
-    }
+    // profilePic(){
+    //     debugger
+    //     if(this.props.author.photoUrl.length === 0){
+    //         debugger
+    //         return(
+    //             <img className="profile-pic" src={window.profilepic_img_1} />
+    //         ) 
+    //     }else{
+    //     debugger
+    //     return( 
+    //         <img className="profile-pic" src={this.props.author.photoUrl} />
+    //     )
+    //     }
+    // }
 
-    render()
-    {
+    render(){
+        debugger 
+        const profilepic = this.props.author.photoUrl.length === 0 ? <img className="profile-pic" src={window.profilepic_img_1} /> : <img className="profile-pic" src={this.props.author.photoUrl} />
         return(
             <div className="review-container">
             
             <section className="review-user">
-                {this.profilePic()}
+                {profilepic}
                 <div className="user-info">
                     <p className="name">{this.props.author.fname} {this.props.author.lname[0]}</p>
                     <p className="zip">{this.props.author.zipcode}</p>

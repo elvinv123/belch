@@ -775,15 +775,15 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, BusinessShow);
 
     _this = _super.call(this, props);
-    _this.state = _this.props.business;
-    debugger;
+    _this.state = _this.props.business; // debugger
+
     return _this;
   }
 
   _createClass(BusinessShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      debugger;
+      // debugger
       this.props.fetchBusiness(this.props.match.params.businessId);
     } // reviewList(){
     //     debugger
@@ -896,11 +896,10 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
-
-      if (this.props.business.authors) {
-        debugger;
-        var authors = this.props.business.authors;
+      // debugger
+      if (this.props.business) {
+        // debugger
+        var authors = this.props.authors;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "business-page"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -922,7 +921,7 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
           className: "business-name"
         }, this.props.business.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "rating-reviews"
-        }, this.rating(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object.values(this.props.business.reviews).length, " reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        }, this.rating(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.reviews.length, " reviews")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "buiness-buttons"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "write-a-review"
@@ -962,7 +961,7 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
           src: window.review_rating_img_1
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/businesses/".concat(this.props.businessId, "/review")
-        }, "Start your review of ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.props.business.name))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.business.reviews).map(function (review) {
+        }, "Start your review of ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.props.business.name))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.reviews.map(function (review) {
           debugger;
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_list_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
             key: review.id,
@@ -1027,12 +1026,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  var businessId = ownProps.match.params.businessId;
-  debugger;
+  var businessId = ownProps.match.params.businessId; // debugger
+
   return {
     business: state.entities.businesses[businessId],
     businessId: businessId,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    reviews: Object.values(state.entities.reviews),
+    authors: state.entities.users
   };
 };
 
@@ -1531,10 +1532,14 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(ReviewListItem);
 
-  function ReviewListItem() {
+  function ReviewListItem(props) {
+    var _this;
+
     _classCallCheck(this, ReviewListItem);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    debugger;
+    return _this;
   }
 
   _createClass(ReviewListItem, [{
@@ -1573,30 +1578,37 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
             src: window.onestar_img_1
           });
       }
-    }
-  }, {
-    key: "profilePic",
-    value: function profilePic() {
-      if (!this.props.author.photoUrl) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          className: "profile-pic",
-          src: window.profilepic_img_1
-        });
-      }
+    } // profilePic(){
+    //     debugger
+    //     if(this.props.author.photoUrl.length === 0){
+    //         debugger
+    //         return(
+    //             <img className="profile-pic" src={window.profilepic_img_1} />
+    //         ) 
+    //     }else{
+    //     debugger
+    //     return( 
+    //         <img className="profile-pic" src={this.props.author.photoUrl} />
+    //     )
+    //     }
+    // }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "profile-pic",
-        src: this.props.author.photoUrl
-      });
-    }
   }, {
     key: "render",
     value: function render() {
+      debugger;
+      var profilepic = this.props.author.photoUrl.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "profile-pic",
+        src: window.profilepic_img_1
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "profile-pic",
+        src: this.props.author.photoUrl
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "review-user"
-      }, this.profilePic(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, profilepic, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "name"
@@ -2587,6 +2599,7 @@ var reviewsReducer = function reviewsReducer() {
   switch (action.type) {
     case _actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESS"]:
       var reviews = action.business.reviews;
+      debugger;
       return Object.assign({}, state, reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:

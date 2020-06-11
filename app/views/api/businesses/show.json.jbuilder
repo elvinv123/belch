@@ -12,14 +12,18 @@
     json.set! review.id do
       json.partial! 'api/reviews/review', review: review
     end
-end
+  end
 
-json.authors do
+  json.authors do
     json.set! review.author.id do
       json.extract! review.author, :id, :fname, :lname, :zipcode
-      if(review.author.photo.attached?)
-        json.photoUrl  review.author.photo.service_url
-      end
+      # if(review.author.photo.attached?)
+      #   json.photoUrl  review.author.photo.service_url
+      # else
+      #   json.photoUrl ""
+      # end
+      
+      json.photoUrl review.author.photo.attached? ? url_for(review.author.photo) : ""
     end
   end
 end

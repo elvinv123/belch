@@ -6,11 +6,13 @@ import { logout } from "../actions/session_actions";
 const mSTP = (state, ownProps) =>{
 
   const businessId = ownProps.match.params.businessId;
-  debugger
+  // debugger
   return  {
     business: state.entities.businesses[businessId],
     businessId: businessId,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    reviews: Object.values(state.entities.reviews),
+    authors: state.entities.users
 }};
 
 const mDTP = dispatch => {

@@ -8,11 +8,11 @@ class BusinessShow extends React.Component{
     constructor(props) {
         super(props)
         this.state = this.props.business;
-        debugger
+        // debugger
     }
 
     componentDidMount(){
-        debugger
+        // debugger
         this.props.fetchBusiness(this.props.match.params.businessId)
     }
 
@@ -90,11 +90,11 @@ class BusinessShow extends React.Component{
 
 
     render(){
-        debugger
+        // debugger
 
-        if (this.props.business.authors){
-            debugger
-            const authors = this.props.business.authors
+        if (this.props.business){
+            // debugger
+            const authors = this.props.authors;
         return (
            
             <div className="business-page">
@@ -113,7 +113,7 @@ class BusinessShow extends React.Component{
                         <h2 className="business-name">{this.props.business.name}</h2>
                         <div className="rating-reviews">
                             {this.rating()}
-                            <p>{Object.values(this.props.business.reviews).length} reviews</p>
+                            <p>{this.props.reviews.length} reviews</p>
                         </div>
                         
                         <section className="buiness-buttons">
@@ -150,7 +150,7 @@ class BusinessShow extends React.Component{
 
                     <ul>
                         {
-                            Object.values(this.props.business.reviews).map(review => {
+                            this.props.reviews.map(review => {
                                 debugger
                                 return <ReviewListItem key={review.id} review={review} author={authors[review.author_id]} />
                             }
