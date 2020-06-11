@@ -7,7 +7,20 @@ class Business < ApplicationRecord
     primary_key: :id,
     class_name: :Review
 
+    has_many :categories_businesses, inverse_of: :business, dependent: :destroy
+    has_many :categories, through: :categories_businesses, source: :category    
     has_many_attached :photos
+
+    def self.search_category(category)
+        cat_id = Category.find_by!(name: category).id
+        cat_b = CategoriesBusiness.find_by(category_id: cat_id)
+
+        return Category.find(cat_id).businesses
+
+        if(category.include?('$'))
+            return Business.where(price_range: category)
+        end
+    end
 
     def average_rating
         reviews.average(:rating)

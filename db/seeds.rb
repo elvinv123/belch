@@ -30,6 +30,7 @@ yoon_review1 = Review.create({rating: 5, body: "really nice bar!", author_id: 3,
 yoon_review2 = Review.create({rating: 5, body: "the lunch menu is really good", author_id: 4, business_id: 3})
 yoon_review3 = Review.create({rating: 3, body: " had to wait a little bit, but the food was good ", author_id: 2, business_id: 3})
 
+#photos
 danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis1.jpg"), filename: "danis1.jpg")
 danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis2.jpg"), filename: "danis2.jpg")
 danis.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/danis3.jpg"), filename: "danis3.jpg")
@@ -46,5 +47,16 @@ yoon.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/yoon
 yoon.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/yoon/yoon3.jpg"), filename: "yoon3.jpg")
 yoon.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/yoon/yoon4.jpg"), filename: "yoon4.jpg")
 
+#categories
+restaurants = Category.create(name: "restaurant")
+groceries = Category.create(name: "groceries")
+nightlife = Category.create(name: "nightlife")
+takeout = Category.create(name: "takeout")
+desserts = Category.create(name: "desserts")
+
+#categories_business
+CategoriesBusiness.create(business_id: 1, category_id: 1)
+CategoriesBusiness.create(business_id: 2, category_id: 1)
+CategoriesBusiness.create(business_id: 3, category_id: 1)
 
 

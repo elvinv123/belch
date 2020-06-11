@@ -30,8 +30,8 @@ const receiveUsers = (business) => ({
 //     .then(business => dispatch(receiveBusiness(business)))
 // )
 
-export const fetchBusinesses = () => dispatch => (
-    BusinessAPIUtil.fetchBusinesses()
+export const fetchBusinesses = (filters) => dispatch => (
+    BusinessAPIUtil.fetchBusinesses(filters)
         .then(businesses => dispatch(receiveBusinesses(businesses))
  ))
 

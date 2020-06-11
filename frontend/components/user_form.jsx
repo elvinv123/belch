@@ -84,7 +84,7 @@ class UserForm extends React.Component {
         return (
             <section className="signup-page">
             <div className="session-page-header">
-                <img className="logo_img_1" src={window.logo_img_1} />
+                    <Link to={`/`}><img className="logo_img_1" src={window.logo_img_1} /></Link>
             </div>
             <div className="session-maincontent">
                 

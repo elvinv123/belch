@@ -6,11 +6,13 @@ class Api::BusinessesController < ApplicationController
     end
 
     def index
-        @businesses = Business.all
+        @businesses = category ? Business.search_category(category) : Business.all
+
         render :index
     end
 
-    # def business_params
-    #     params.require(:business).permit(:title, photos: [])
-    # end
+
+     def category
+        params[:category]
+    end
 end

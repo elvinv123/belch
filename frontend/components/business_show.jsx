@@ -93,7 +93,7 @@ class BusinessShow extends React.Component{
            
             <div className="business-page">
                 <div className="business-page-header">
-                    <img className="business-page-logo" src={window.logo_img_1} />
+                    <Link to={`/`}><img className="business-page-logo" src={window.logo_img_1} /></Link>
                         {this.logged_in()}
                     <Link to={`/businesses/${this.props.businessId}/review`}>
                         <button className="write-review-header">Write a Review</button>

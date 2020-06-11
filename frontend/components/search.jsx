@@ -1,6 +1,6 @@
 import React from 'react';
-import BusinessMap from './business_map';
-import BusinessIndex from './business_index';
+import SearchIndexItem from "./search_index_item"
+
 
 class Search extends React.Component{
     constructor(props){
@@ -8,16 +8,31 @@ class Search extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchBusinesses();
+        this.props.fetchBusinesses({ category: this.props.match.params.query});
     }
+
+    businessItems() {
+
+        if (!this.props.businesses) return null;
+        return (
+            <ul>
+                {
+                    Object.values(this.props.businesses).map(business =>
+                        <SearchIndexItem key={business.id} business={business} />
+                    )
+                }
+            </ul>
+        )
+    }
+
     render(){
         return(
             <div>
-                <BusinessMap businesses={this.props.businesses}/>
-                <BusinessIndex businesses={this.props.businesses} fetchBusinesses={this.props.fetchBusinesses}/>
+                {this.businessItems()}
             </div>
         )
     }
 }
 
 export default Search;
+
