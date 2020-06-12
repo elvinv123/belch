@@ -98,7 +98,7 @@
 .search-bar input{
     transform: translate(32vw, 190px);
     position: relative;
-
+     padding-left: 10px;
 }
  .search-bar button{
     transform: translate(32vw, 208px);

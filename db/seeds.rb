@@ -21,7 +21,7 @@ mariscos = Business.create({name: 'Los Mariscos', price_range: '$', address: '40
 amys = Business.create({name: 'Amy Ruth\'s', price_range: '$$', address: '113 W 116th St New York, NY 10026', latitude: 40.802623, longitude: -73.950268, phone_number: '(212) 280-8779', hours: "11:00 am - 11:00 pm, 9:00 am - 11:00 pm, 9:00 am - 11:00 pm, 9:00 am - 11:00 pm, 9:00 am - 12:00 am, 8:30 am - 5:30 am, 8:30 am - 11:00 pm", website: 'http://amyruths.com/'})
 mogador = Business.create({name: 'Cafe Mogador', price_range: '$$', address: '133 Wythe Ave, Brooklyn, NY 11211', latitude: 40.719936, longitude: -73.959964, phone_number: '(718) 486-9222', hours: "11:30 am - 9:00 pm, 11:30 am - 9:00 pm, 11:30 am - 9:00 pm, 11:30 am - 9:00 pm, 11:30 am - 10:00 pm, 11:30 am - 10:00 pm, 11:30 am - 9:00 pm", website: 'http://cafemogador/'})
 hangar = Business.create({name: 'Hangar 11 Bar & Grill', price_range: '$$', address: '119-11 Metropolitan Ave, Kew Gardens, NY 11415', latitude: 40.706415, longitude: -73.831323, phone_number: '(516) 362-0803', hours: "12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm, 12:00 pm - 9:00 pm", website: 'http://hangar11bar/'})
-wah_fung = Business.create({name: 'Wah Fung No 1', price_range: '$', address: '79 Chrystie St, New York, NY 10002', latitude: 40.717540, longitude: -73.994545, phone_number: '(212) 925-5175', hours: "Closed, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm", website: 'http://wahfung1.com/'})
+wah = Business.create({name: 'Wah Fung No 1', price_range: '$', address: '79 Chrystie St, New York, NY 10002', latitude: 40.717540, longitude: -73.994545, phone_number: '(212) 925-5175', hours: "Closed, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm, 9:00 am - 7:00 pm", website: 'http://wahfung1.com/'})
 aviary = Business.create({name: 'The Aviary NYC', price_range: '$$$$', address: '80 Columbus Cir 60 St, New York, NY 10023', latitude: 40.769273, longitude: -73.982943, phone_number: '(212) 925-5175', hours: "5:00 pm - 11:30 pm, 5:00 pm - 11:30 pm, 5:00 pm - 11:30 pm, 5:00 pm - 11:30 pm, 5:00 pm - 12:00 pm, 5:00 pm - 12:00 pm, 5:00 pm - 11:30 pm", website: 'http://aviarynyc.com/'})
 
 
@@ -46,9 +46,9 @@ los_mariscos_review1 = Review.create({rating: 4, body: "One of the Best fish tac
 los_mariscos_review2 = Review.create({rating: 4, body: "It's all very fresh including the tortillas which you can see them making right In front of you.", author_id: 3, business_id: 5})
 los_mariscos_review3 = Review.create({rating: 4, body: "Honestly best tacos i've ever had in new york. I  know everyone already says that so really no point in writing more.", author_id: 4, business_id: 5})
 
-amy_review1 = Review.create({rating: 5, body: "The service was great and you can definitely tell this place has charm and history.", author_id: 3, business_id: 6)
+amy_review1 = Review.create({rating: 5, body: "The service was great and you can definitely tell this place has charm and history.", author_id: 3, business_id: 6})
 amy_review2 = Review.create({rating: 5, body: "The fried chicken, sautéed greens, cheesy grits, and catfish were amazing! The service also wonderful! All and all no complaints.", author_id: 4, business_id: 6})
-amy_review3 = Review.create({rating: 3, body: "This place is bomb. Can't wait to go back. The staff was very friendly. It was fair priced and the food came out hot.", author_id: 2, business_id: 6)
+amy_review3 = Review.create({rating: 3, body: "This place is bomb. Can't wait to go back. The staff was very friendly. It was fair priced and the food came out hot.", author_id: 2, business_id: 6})
 
 mogador_review1 = Review.create({rating: 3, body: "Overall, it's a really cozy-designed place with great food but it might not be our first choice to dine out next time.", author_id: 2, business_id: 7})
 mogador_review2 = Review.create({rating: 4, body: "Went here for Brunch a while ago and I still think about how great the Halloumi Eggs Benedict is.  Literally I have dreams about how good it is!", author_id: 3, business_id: 7})
@@ -108,19 +108,57 @@ hangar.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/ha
 hangar.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/hangar/hangar3.jpg"), filename: "hangar3.jpg")
 hangar.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/hangar/hangar4.jpg"), filename: "hangar4.jpg")
 
+wah.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/wah/wah1.jpg"), filename: "wah1.jpg")
+wah.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/wah/wah2.jpg"), filename: "wah2.jpg")
+wah.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/wah/wah3.jpg"), filename: "wah3.jpg")
+wah.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/wah/wah4.jpg"), filename: "wah4.jpg")
+
+aviary.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/aviary/aviary1.jpg"), filename: "aviary1.jpg")
+aviary.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/aviary/aviary2.jpg"), filename: "aviary2.jpg")
+aviary.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/aviary/aviary3.jpg"), filename: "aviary3.jpg")
+aviary.photos.attach(io: open("https://belch-seeds.s3.us-east-2.amazonaws.com/aviary/aviary4.jpg"), filename: "aviary4.jpg")
+
 #categories
 restaurants = Category.create(name: "restaurant")
-groceries = Category.create(name: "groceries")
 nightlife = Category.create(name: "nightlife")
+bars = Category.create(name: "bars")
 takeout = Category.create(name: "takeout")
 desserts = Category.create(name: "desserts")
 pizza = Category.create(name: "pizza")
+food = Category.create(name: "food")
+tacos = Category.create(name: "tacos")
+chinese = Category.create(name: "chinese")
+mexican = Category.create(name: "mexican")
 
 #categories_business
 CategoriesBusiness.create(business_id: 1, category_id: 1)
+CategoriesBusiness.create(business_id: 1, category_id: 7)
 CategoriesBusiness.create(business_id: 1, category_id: 6)
 CategoriesBusiness.create(business_id: 2, category_id: 1)
+CategoriesBusiness.create(business_id: 2, category_id: 2)
+CategoriesBusiness.create(business_id: 2, category_id: 7)
 CategoriesBusiness.create(business_id: 3, category_id: 1)
-CategoriesBusiness.create(business_id: 1, category_id: 6)
+CategoriesBusiness.create(business_id: 3, category_id: 7)
+CategoriesBusiness.create(business_id: 4, category_id: 1)
+CategoriesBusiness.create(business_id: 4, category_id: 6)
+CategoriesBusiness.create(business_id: 4, category_id: 7)
+CategoriesBusiness.create(business_id: 5, category_id: 1)
+CategoriesBusiness.create(business_id: 5, category_id: 8)
+CategoriesBusiness.create(business_id: 5, category_id: 7)
+CategoriesBusiness.create(business_id: 6, category_id: 1)
+CategoriesBusiness.create(business_id: 6, category_id: 7)
+CategoriesBusiness.create(business_id: 7, category_id: 1)
+CategoriesBusiness.create(business_id: 7, category_id: 7)
+CategoriesBusiness.create(business_id: 8, category_id: 2)
+CategoriesBusiness.create(business_id: 8, category_id: 3)
+CategoriesBusiness.create(business_id: 8, category_id: 7)
+CategoriesBusiness.create(business_id: 9, category_id: 1)
+CategoriesBusiness.create(business_id: 9, category_id: 7)
+CategoriesBusiness.create(business_id: 9, category_id: 9)
+CategoriesBusiness.create(business_id: 10, category_id: 2)
+CategoriesBusiness.create(business_id: 10, category_id: 3)
+CategoriesBusiness.create(business_id: 10, category_id: 7)
+
+
 
 

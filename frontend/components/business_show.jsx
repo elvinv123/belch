@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link, Route} from 'react-router-dom';
-import ReviewFormContainer from './review_form_container';
 import ReviewListItem from './review_list_item'
 import BusinessMap from './business_map'
 
 class BusinessShow extends React.Component{
     constructor(props) {
         super(props)
-        this.state = this.props.business;
-        // debugger
+
+        this.state = {
+            category: ""
+        }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -16,20 +19,15 @@ class BusinessShow extends React.Component{
         this.props.fetchBusiness(this.props.match.params.businessId)
     }
 
-    // reviewList(){
-    //     debugger
-    //     if (!this.props.business) return null;
-    //     return(
-    //         <ul>
-    //             {
-    //             Object.values(this.props.business.reviews).map(review => {
-    //                 debugger
-    //              return <ReviewListItem key={review.id} review={review} author={this.props.business.authors[review.author_id]}/>}
-    //             )
-    //             }
-    //         </ul>
-    //     )
-    // }
+    handleSubmit(e) {
+        e.preventDefault();
+
+        this.props.history.push(`/businesses/search/${this.state.category}`);
+    }
+
+    handleChange(type) {
+        return (e) => this.setState({ [type]: e.target.value });
+    }
 
     logged_in() {
         if (this.props.currentUser) {
@@ -95,15 +93,22 @@ class BusinessShow extends React.Component{
         if (this.props.business){
             // debugger
             const authors = this.props.authors;
+
+            const { category } = this.state;
         return (
            
             <div className="business-page">
                 <div className="business-page-header">
                     <Link to={`/`}><img className="business-page-logo" src={window.logo_img_1} /></Link>
                         {this.logged_in()}
-                    <Link to={`/businesses/${this.props.businessId}/review`}>
-                        <button className="write-review-header">Write a Review</button>
-                    </Link>
+                    <form className="business-search-bar" onSubmit={this.handleSubmit}>
+                        <input type="text"
+                            value={category}
+                            placeholder="Find tacos, bars, pizza"
+                            onChange={this.handleChange("category")}
+                        />
+                        <button type="submit"></button>
+                    </form>
                 </div>
                 <section>
                     {this.headerPhotos()}

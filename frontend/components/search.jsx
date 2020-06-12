@@ -1,7 +1,8 @@
 import React from 'react';
 import SearchIndexItem from "./search_index_item"
 import BusinessMap from './business_map'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import createHistory from 'history';
 
 
 class Search extends React.Component{
@@ -13,13 +14,16 @@ class Search extends React.Component{
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.button = this.button.bind(this);
     }
 
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
 
         this.props.history.push(`/businesses/search/${this.state.category}`);
+        window.location.reload();
     }
 
     handleChange(type) {
@@ -57,6 +61,10 @@ class Search extends React.Component{
             )
         }
     }
+    button(category){
+        this.props.history.push(`/businesses/search/${category}`)
+        window.location.reload();
+    }
 
     render(){
         if (!this.props.businesses) return null;
@@ -69,7 +77,7 @@ class Search extends React.Component{
                     <form className="search-search-bar" onSubmit={this.handleSubmit}>
                         <input type="text"
                             value={category}
-                            placeholder="Email"
+                            placeholder="Find tacos, bars, pizza"
                             onChange={this.handleChange("category")}
                         />
                         <button type="submit"></button>
@@ -77,11 +85,25 @@ class Search extends React.Component{
                     {this.logged_in()}<BusinessMap businesses={this.props.businesses} />
                 </div>
                 <section className="search-page-maincontent">
+                    <div className="categories-buttons">
+                        <section className="cat-buttons">
+                            <h2>Categories</h2>
+                            <button onClick={() =>this.button("bars")}>Bars</button>
+                            <button onClick={() =>this.button("restaurant")}>Restaurants</button>
+                            <button onClick={() =>this.button("desserts")}>Desserts</button> 
+                        </section>
+                             <section className="price-buttons">
+                                <button className="d" onClick={() =>this.button("$")}>$</button>
+                                <button className="dd"onClick={() =>this.button("$$")}>$$</button>
+                                <button className="ddd"onClick={() =>this.button("$$$")}>$$$</button>
+                                <button className="dddd" onClick={() =>this.button("$$$$")}>$$$$</button>
+                            </section>
+                    </div>
                     {this.businessItems()}
                     
                  </section>
                 <div className="footer">
-                    <img className="footer_img_1" src={window.footer_img_1} />
+                    <img className="search-footer_img_1" src={window.footer_img_1} />
                 </div>
             </div>
         )

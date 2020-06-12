@@ -1,21 +1,27 @@
 .search-item{
-    width: 762px;
+    width: 53vw;
     height: 254px;
     border: 1px solid #eeeeef;
     border-radius: 4px;
-    margin: 0 15px 15px 15px;
+    margin: 0 15px 15px 35px;
+}
+
+.search-item:hover{
+     box-shadow: 0px 0px 20px -5px #bbbac0
 }
 .search-item p{
     font-size: 14px;
     margin-left: 13px;
     margin-bottom: 8px;
+    color: #757280;
 }
 .search-item h1{
     margin-top: 20px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     margin-left: 13px;
     margin-bottom: 8px;
+    color: black;
 }
 
 .search-rating{
@@ -35,7 +41,9 @@
 
 .business-search-info{
     display: inline-block;
-
+    transform: translate(0vw, -10vh);
+    z-index: -1000;
+    position: relative;
 }
 
 

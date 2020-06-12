@@ -11,15 +11,16 @@
     border-bottom: 1px solid #ccc;
     position: fixed;
     width: 100%;
+    
 }
 
 .search-logout{
-    transform: translate(78.3vw, 1vw);
+    transform: translate(80vw, -6vh);
     display: inline-block;
 }
 
 .search-login-signup{
-    transform: translate();
+    transform: translate(40vw, 1vw);
     position: relative;
     display: inline-block;
     width: 200px;
@@ -71,9 +72,9 @@
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate();
-    width: 80px;
-    height: 30px;
+    transform: translate(-32vw, 7vh);
+    width: 100px;
+    height: 35px;
     display: inline-block;
 }
 
@@ -102,11 +103,14 @@
 }
 
 .search-search-bar input{
-    transform: translate(0px, 0px);
-
+    transform: translate(20vw, 50px);
+    box-shadow: 0px 0px 20px -5px #bbbac0;
+    
+    padding-left: 10px;
 }
  .search-search-bar button{
-    transform: translate(0px, 0px);
+    transform: translate(20vw,67px);
+    box-shadow: 0px 0px 20px -5px #bbbac0;
  }
 
 /* main content */
@@ -117,6 +121,8 @@
 
  .search-results{
      display:inline-block;
+     min-height: 90vh;
+     padding-top: 20vh;
  }
 
 
@@ -126,4 +132,94 @@
     transform: translate(74.8vw, 69px);
     position: fixed;
 
+}
+
+.categories-buttons{
+    width: 15vw;
+    display: inline-block; 
+    /* height: 500px */
+    
+
+}
+
+.cat-buttons{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  margin-top: 200px;
+  margin-left: 31.5px;
+
+}
+.cat-buttons h2{
+    font-weight: 700;
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 150px;
+    transform: translate(1.3vw, -0vh);
+}
+
+.price-buttons{
+    position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  margin-top: 400px;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.cat-buttons button{
+    display: block;
+    width: 80px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    margin-left: 37px;
+    margin-bottom: 10px;
+}
+
+.price-buttons button{
+    text-align: center;
+display: inline-block;
+border: 1px solid #ccc;
+padding: 8px 10px;
+width: 28px;
+}
+
+.price-buttons .d{
+display: inline-block;
+border: 1px solid #ccc;
+
+border-radius: 15px 0px 0px 15px;
+}
+.price-buttons .dddd{
+display: inline-block;
+border: 1px solid #ccc;
+
+border-radius: 0px 15px 15px 0px;
+}
+
+
+
+/* footer */
+
+
+.search-footer_img_1{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-75%, -50%)
 }

@@ -19,18 +19,21 @@ class SearchIndexItem extends React.Component {
         }
     }
 
-    render() {
-        return (
 
+    render() {
+        const review = Object.values(this.props.business.reviews)[0]
+        return (
+            <Link to={`/businesses/${this.props.business.id}`}>
             <div className="search-item">
-                <Link to={`/businesses/${this.props.business.id}`}><img className="search-item-pic" src={this.props.business.photoUrls[0]} /></Link>
+            <img className="search-item-pic" src={this.props.business.photoUrls[0]} />
                 <div className="business-search-info">
-                    <Link to={`/businesses/${this.props.business.id}`}><h1>{this.props.business.name}</h1></Link>
+                     <h1>{this.props.business.name}</h1>
                     {this.starRating()}
                     <p>{this.props.business.phone_number}</p>
                     <p>{this.props.business.address}</p>
                 </div>
             </div>
+            </Link>
 
         )
     }

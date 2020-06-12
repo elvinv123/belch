@@ -33,7 +33,7 @@ class BusinessIndex extends React.Component{
         return (
             <ul>
                 {
-                    Object.values(this.props.businesses).map(business =>
+                    Object.values(this.props.businesses).slice(0,3).map(business =>
                         <HotNewBusiness key={business.id }business = {business} />
                     )
                 }
@@ -67,7 +67,7 @@ class BusinessIndex extends React.Component{
                     <form className="search-bar" onSubmit={this.handleSubmit}>
                         <input type="text"
                             value={category}
-                            placeholder="Email"
+                            placeholder="Find tacos, bars, pizza"
                             onChange={this.handleChange("category")}
                         />
                         <button type="submit"></button>

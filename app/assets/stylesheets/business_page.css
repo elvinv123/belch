@@ -83,12 +83,12 @@
 }
 
 .business-page-logo{
-    position: relative;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-47vw, -2.3vw);
-    width: 80px;
-    height: 30px;
+    transform: translate(-40vw,-42.5vh);
+    width: 100px;
+    height: 35px;
     display: inline-block;
 }
 
@@ -112,7 +112,42 @@
     height: 225px;
     display: inline-block;
 }
+/* search bar */
 
+.search-search-bar{
+    display: inline-block;
+}
+
+
+.business-search-bar input{
+    width: 481px;
+    height: 45px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 4px 0px 0px 4px;
+}
+.business-search-bar button{
+    height: 45px;
+    width: 64px;
+    background-color:#f43939;
+    display: inline-block;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.business-search-bar button:hover{
+    background-color: #bd1f1f;
+}
+
+.business-search-bar input{
+    transform: translate(20vw, 5px);
+    box-shadow: 0px 0px 20px -5px #bbbac0;
+    
+    padding-left: 10px;
+}
+ .business-search-bar button{
+    transform: translate(20vw,23px);
+    box-shadow: 0px 0px 20px -5px #bbbac0;
+ }
 /* location & hours
 
 */
@@ -176,15 +211,22 @@ scroll box*/
     display: inline-block;
     width: 382px;
     height: 95x;
-    /* transform: translate(890px, -240px); */
-    transform: translate(250%, -120%);
+    /* transform: translate(67vw, 400px); */
+    transform: translate(67vw, 400px);
     border: 1px solid #eeeeef;
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: .5rem;
-    align-self: flex-end;
+    /*position: -webkit-sticky;
+    position: sticky;*/
+    /* bottom: .5rem;  */
+    /* align-self: flex-end; */
     border-radius: 3px;
     font-size: 14px;
+
+    position: absolute;
+    /* position: fixed; */
+  top: 0;
+  left: 0;
+  z-index: 999;
+  margin-top: 100px;
 }
 
 .phone img, .website img, .directions img, .message img {
