@@ -5,7 +5,6 @@ import { render } from 'react-dom';
 class ReviewListItem extends React.Component{
     constructor(props){
         super(props);
-        debugger
     }
   
     starRating(){
@@ -39,8 +38,7 @@ class ReviewListItem extends React.Component{
     //     }
     // }
 
-    render(){
-        debugger 
+    render(){ 
         const profilepic = this.props.author.photoUrl.length === 0 ? <img className="profile-pic" src={window.profilepic_img_1} /> : <img className="profile-pic" src={this.props.author.photoUrl} />
         return(
             <div className="review-container">

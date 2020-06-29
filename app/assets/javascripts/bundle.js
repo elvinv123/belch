@@ -1553,13 +1553,9 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ReviewListItem);
 
   function ReviewListItem(props) {
-    var _this;
-
     _classCallCheck(this, ReviewListItem);
 
-    _this = _super.call(this, props);
-    debugger;
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(ReviewListItem, [{
@@ -1616,7 +1612,6 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var profilepic = this.props.author.photoUrl.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-pic",
         src: window.profilepic_img_1
