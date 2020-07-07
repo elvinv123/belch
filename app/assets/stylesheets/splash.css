@@ -70,10 +70,10 @@
 .splash-page-logo{
     position: relative;
     top: 50%;
-    left: 50%;
-    transform: translate(-75px, -142px);
+    transform: translate(0px, -142px);
     width: 160px;
     height: 60px;
+    margin: 0 auto;
 }
 
 .search-bar input{
@@ -82,6 +82,12 @@
     background-color: white;
     display: inline-block;
     border-radius: 4px 0px 0px 4px;
+    padding-left: 10px;
+    
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, 170px);
 }
 .search-bar button{
     height: 45px;
@@ -89,21 +95,16 @@
     background-color:#d32323;
     display: inline-block;
     border-radius: 0px 4px 4px 0px;
+    
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-421.5%, 187.5px);
 }
 
 .search-bar button:hover{
     background-color: #be2020;
 }
-
-.search-bar input{
-    transform: translate(32vw, 190px);
-    position: relative;
-     padding-left: 10px;
-}
- .search-bar button{
-    transform: translate(32vw, 208px);
-    position: relative;
- }
 
 /* main page */
 .splash-main-content h2{
@@ -115,10 +116,12 @@
     padding-bottom: 20px;
     width: 963px;
     border-bottom: 1px solid #eeeeef;
-    margin-left: 240px;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 .hot-new ul{
-    margin-left: 16%;
+    width: 1000px;
+    margin: 0 auto;
 }
 
 .hot-new h3{

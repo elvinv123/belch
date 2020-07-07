@@ -19,7 +19,6 @@ const reviewsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_BUSINESS:
             const reviews =  action.business.reviews ;
-            debugger
             return Object.assign({}, state, reviews) 
         case RECEIVE_REVIEW:
             const { review } = action;

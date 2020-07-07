@@ -795,7 +795,6 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
   _createClass(BusinessShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // debugger
       this.props.fetchBusiness(this.props.match.params.businessId);
     }
   }, {
@@ -909,9 +908,7 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger
       if (this.props.business) {
-        // debugger
         var authors = this.props.authors;
         var category = this.state.category;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -949,23 +946,23 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
           to: "/businesses/".concat(this.props.businessId, "/review")
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.review_img_1
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "add-photo"
+        }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "scroll-info"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "website"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.camera_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add Photo")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "share"
+          src: window.website_img_1
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: this.props.business.website
+        }, this.props.business.website))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          className: "phone"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.share_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Share")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "save"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.save_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Save"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          src: window.phone_img_1
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.phone_number))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "location-hours"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Location & Hours"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
           business: this.props.business
-        }), this.hours())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        }), this.hours()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "recommended-reviews"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Recommended Reviews"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "your-trust"
@@ -982,33 +979,12 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/businesses/".concat(this.props.businessId, "/review")
         }, "Start your review of ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.props.business.name))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.reviews.map(function (review) {
-          debugger;
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_list_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
             key: review.id,
             review: review,
             author: authors[review.author_id]
           });
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "scroll-info"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "website"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.website_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: this.props.business.website
-        }, this.props.business.website))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "phone"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.phone_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.business.phone_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "directions"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.directions_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Get Directions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          className: "message"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: window.message_img_1
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "Message the Business"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "footer"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "footer_img_1",
@@ -1046,8 +1022,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  var businessId = ownProps.match.params.businessId; // debugger
-
+  var businessId = ownProps.match.params.businessId;
   return {
     business: state.entities.businesses[businessId],
     businessId: businessId,
@@ -1745,7 +1720,6 @@ var Search = /*#__PURE__*/function (_React$Component) {
   _createClass(Search, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      debugger;
       e.preventDefault();
       this.props.history.push("/businesses/search/".concat(this.state.category));
       window.location.reload();
@@ -2664,7 +2638,6 @@ var reviewsReducer = function reviewsReducer() {
   switch (action.type) {
     case _actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESS"]:
       var reviews = action.business.reviews;
-      debugger;
       return Object.assign({}, state, reviews);
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:

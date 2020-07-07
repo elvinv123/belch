@@ -15,7 +15,6 @@ class BusinessShow extends React.Component{
     }
 
     componentDidMount(){
-        // debugger
         this.props.fetchBusiness(this.props.match.params.businessId)
     }
 
@@ -88,10 +87,8 @@ class BusinessShow extends React.Component{
 
 
     render(){
-        // debugger
 
         if (this.props.business){
-            // debugger
             const authors = this.props.authors;
 
             const { category } = this.state;
@@ -127,17 +124,37 @@ class BusinessShow extends React.Component{
                                     <img src={window.review_img_1} />
                                 </Link>
                             </section>
-                            <button className="add-photo"><img src={window.camera_img_1} /><p>Add Photo</p></button>
-                            <button className="share"><img src={window.share_img_1} /><p>Share</p></button>
-                            <button className="save"><img src={window.save_img_1} /><p>Save</p></button> 
+                         </section>
+                    </div>  
+                    <div className="scroll-info">
+                        <section className="website">
+                            <img src={window.website_img_1} />
+                            <p><a href={this.props.business.website}>{this.props.business.website}</a></p>
                         </section>
+                        <section className="phone">
+                            <img src={window.phone_img_1} />
+                            <p>{this.props.business.phone_number}</p>
+                        </section>
+                        {/* <section className="directions">
+                        <img src={window.directions_img_1} />
+                        <a>Get Directions</a>
+                    </section>
+                    <section className="message">
+                        <img src={window.message_img_1} />
+                        <a>Message the Business</a>
+                    </section> */}
+                    </div> 
+                            {/* <button className="add-photo"><img src={window.camera_img_1} /><p>Add Photo</p></button>
+                            <button className="share"><img src={window.share_img_1} /><p>Share</p></button>
+                            <button className="save"><img src={window.save_img_1} /><p>Save</p></button>  */}
+                        
                     <section className="location-hours">
                         <h2>Location & Hours</h2>
                         <BusinessMap business={this.props.business}/>
                         {this.hours()}
                     </section>
                         
-                    </div>
+                    
 
                     <section className="recommended-reviews">
                         <h2>Recommended Reviews</h2>
@@ -156,7 +173,6 @@ class BusinessShow extends React.Component{
                     <ul>
                         {
                             this.props.reviews.map(review => {
-                                debugger
                                 return <ReviewListItem key={review.id} review={review} author={authors[review.author_id]} />
                             }
                             )
@@ -164,24 +180,7 @@ class BusinessShow extends React.Component{
                     </ul>
 
                 </div>
-                <div className="scroll-info">
-                    <section className="website">
-                        <img src={window.website_img_1} />
-                        <p><a href={this.props.business.website}>{this.props.business.website}</a></p>  
-                    </section>
-                    <section className="phone">
-                        <img src={window.phone_img_1} />
-                        <p>{this.props.business.phone_number}</p>
-                    </section>
-                    <section className="directions">
-                        <img src={window.directions_img_1} />
-                        <a>Get Directions</a>
-                    </section>
-                    <section className="message">
-                        <img src={window.message_img_1} />
-                        <a>Message the Business</a>
-                    </section>
-                </div>
+               
 
                 
                 <div className="footer">

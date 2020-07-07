@@ -19,7 +19,6 @@ class Search extends React.Component{
 
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
 
         this.props.history.push(`/businesses/search/${this.state.category}`);

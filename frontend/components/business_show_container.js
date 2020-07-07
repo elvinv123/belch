@@ -6,7 +6,6 @@ import { logout } from "../actions/session_actions";
 const mSTP = (state, ownProps) =>{
 
   const businessId = ownProps.match.params.businessId;
-  // debugger
   return  {
     business: state.entities.businesses[businessId],
     businessId: businessId,
