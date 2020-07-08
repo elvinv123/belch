@@ -13,5 +13,7 @@ class Review < ApplicationRecord
     primary_key: :id,
     class_name: :Business
 
+    has_one_attached :photo
+
 
 end

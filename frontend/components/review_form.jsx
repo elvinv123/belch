@@ -6,7 +6,8 @@ class ReviewForm extends React.Component{
         super(props);
         this.state = {
             rating: 4,
-            body: ""
+            body: "",
+            photoFile: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,11 +20,35 @@ class ReviewForm extends React.Component{
     handleSubmit(e){
         e.preventDefault();
         const businessId = parseInt(this.props.match.params.businessId);
+
+        const formData = new FormData();
+        formData.append('review[rating]', this.state.rating)
+        formData.append('review[body]', this.state.body)
+        formData.append('review[photo]', this.state.photoFile)
+        formData.append('review[business_id]', businessId)
+
+        
         const review = Object.assign({}, this.state, {
             business_id: businessId
         });
-        this.props.createReview(review);
+        
+        // this.props.createReview(review); 
+
+        $.ajax({
+            url: "/api/reviews",
+            method: "POST",
+            data: formData,
+            contentType: false,
+            processData: false
+        });
+
         <Redirect to={`/businesses/${businessId}`} />
+
+       
+    }
+
+    handleFile(e){
+        this.setState({photoFile: e.currentTarget.files[0]})
     }
 
     update(field) {
@@ -109,6 +134,7 @@ class ReviewForm extends React.Component{
                                     onChange={this.update("body")}
                                 ></textarea>
                                 <div className="errors">{this.renderErrors()}</div>
+                                <input type="file" onChange={this.handleFile.bind(this)}/>
                             </div>
                             <button type="submit" className="post-review-btn" >Post Review</button>
                             

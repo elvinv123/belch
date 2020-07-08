@@ -1289,7 +1289,8 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       rating: 4,
-      body: ""
+      body: "",
+      photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -1305,14 +1306,33 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var businessId = parseInt(this.props.match.params.businessId);
+      var formData = new FormData();
+      formData.append('review[rating]', this.state.rating);
+      formData.append('review[body]', this.state.body);
+      formData.append('review[photo]', this.state.photoFile);
+      formData.append('review[business_id]', businessId);
       var review = Object.assign({}, this.state, {
         business_id: businessId
+      }); // this.props.createReview(review); 
+
+      $.ajax({
+        url: "/api/reviews",
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false
       });
-      this.props.createReview(review);
 
       /*#__PURE__*/
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
         to: "/businesses/".concat(businessId)
+      });
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      this.setState({
+        photoFile: e.currentTarget.files[0]
       });
     }
   }, {
@@ -1460,7 +1480,10 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("body")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "errors"
-      }, this.renderErrors())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.renderErrors()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile.bind(this)
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "post-review-btn"
       }, "Post Review")))));
@@ -3048,12 +3071,15 @@ var MarkerManager = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
 var createReview = function createReview(review) {
+  debugger;
   return $.ajax({
     url: "/api/reviews",
     method: "POST",
     data: {
       review: review
-    }
+    },
+    contentType: false,
+    processData: false
   });
 };
 
