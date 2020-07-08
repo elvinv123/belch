@@ -79,7 +79,7 @@ class Search extends React.Component{
                             placeholder="Find tacos, bars, pizza"
                             onChange={this.handleChange("category")}
                         />
-                        <button type="submit"></button>
+                        <button type="submit"><img className="magnefying_glass" src={window.search} /></button>
                     </form>
                     {this.logged_in()}<BusinessMap businesses={this.props.businesses} />
                 </div>
@@ -102,6 +102,11 @@ class Search extends React.Component{
                     
                  </section>
                 <div className="footer">
+                    <section className="search-socials">
+                        <a href="https://linkedin.com/in/elvin-valette-5b2945a5"><img className="linkedin" src={window.linkedin} /></a>
+                        <a href="https://github.com/elvinv123"><img className="github" src={window.github} /></a>
+                        <a href="https://angel.co/u/elvin-valette"><img className="angellist" src={window.angellist} /></a>
+                    </section>
                     <img className="search-footer_img_1" src={window.footer_img_1} />
                 </div>
             </div>

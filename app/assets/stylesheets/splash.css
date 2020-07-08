@@ -89,17 +89,22 @@
     left: 50%;
     transform: translate(-55%, 170px);
 }
+
 .search-bar button{
     height: 45px;
     width: 64px;
     background-color:#d32323;
     display: inline-block;
     border-radius: 0px 4px 4px 0px;
-    
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-421.5%, 187.5px);
+}
+
+.magnefying_glass{
+    height: 25px;
+    margin-left: 17px;
 }
 
 .search-bar button:hover{

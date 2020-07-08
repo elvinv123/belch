@@ -18,6 +18,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: auto
  }
+ 
  .session-form-container {
     width: 350px;
     font-size: 14px;
@@ -40,101 +41,105 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-     
  }
- 
 
  .session-form-container .password-field{
-   width: 300px;
-    /* min-width: 300px; */
+    width: 300px;
     padding: 5px 9px;
     margin: 0px 0px 18px;
     display: block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-     
  }
 
   .session-form-container .zipcode-field{
     width: 20.9vw;
-      /* min-width: 300px; */
-     padding: 5px 9px;
+    padding: 5px 9px;
     margin: 0px 0px 9px;
     display: block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; 
- }
-
-
+  }
 
   .session-form-container .session-button{
-      display: block;
-      width: 300px;
-      background-color: #d32324;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      padding-bottom: 10px;
-
-      padding: 11.5px 1px;
-      /* margin: 8px 0; */
-      
-      font-weight: bold;
-      font-size: 16px;
-      text-align: center;
+    display: block;
+    width: 300px;
+    background-color: #d32324;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding: 11.5px 1px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
   }
 
   .signup-text h2 {
-        color: #d32324;
-        font-size: 22px;
-        margin: 0 0 6px;
-        font-weight: bold;
+    color: #d32324;
+    font-size: 22px;
+    margin: 0 0 6px;
+    font-weight: bold;
   }
 
    .signup-text p {
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
   }
+
   .signup-text .privacy {
-        font-weight: normal;
-        font-size: 12px;
-        margin-bottom: 24px;
+    font-weight: normal;
+    font-size: 12px;
+    margin-bottom: 24px;
   }
 
  .footer{
+    background-color :#f5f5f5;
+    border-top: 1px solid #ccc;;
+    width: 100%;
+    height: 400px;   
+  }
 
-  background-color :#f5f5f5;
-  border-top: 1px solid #ccc;;
-  width: 100%;
-  height: 320px;   
+  .socials{
+    width: 600px;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top: 40px;
+    position: relative;
+    transform: translate(-35%, 0%)
+  }
+  .socials img{
+    display: inline-block;
+    height: 100px;
+    margin-right: 100px;
   }
 
   .login-link{
-      color: #999;
-      width: 300px;
-      font-size: 12px;
-      text-align: right;
-      margin-top: 12px;
+    color: #999;
+    width: 300px;
+    font-size: 12px;
+    text-align: right;
+    margin-top: 12px;
   }
 
   .signup_img_1{
-      max-width: 362;
-      height: 322;
-      position: relative;
-        top: 50%;
-        left: 50%;
-        margin-right: -50%;
-        transform: translate(10%, -75%)
-
+    max-width: 362;
+    height: 322;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(10%, -75%)
   }
 
-.birthday-P{
+  .birthday-P{
     margin-bottom: 8px;
-}
+  }
+
   .birthday-P {
     display: inline-block;
     font-weight: bold;
@@ -147,16 +152,14 @@
     margin-left: 5px;
   }
 
+  .demo-button{
+    margin-top: 10px;
+  }
 
-.demo-button{
-margin-top: 10px;
-}
-
-
-.footer_img_1{
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
+  .footer_img_1{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -100%)
+  }

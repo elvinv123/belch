@@ -221,5 +221,19 @@ border-radius: 0px 15px 15px 0px;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-75%, -50%)
+  transform: translate(-75%, -120%)
 }
+
+  .search-socials{
+    width: 600px;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top: 40px;
+    position: relative;
+    transform: translate(-70%, 0%)
+  }
+  .search-socials img{
+    display: inline-block;
+    height: 100px;
+    margin-right: 100px;
+  }
