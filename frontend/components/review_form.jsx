@@ -7,7 +7,8 @@ class ReviewForm extends React.Component{
         this.state = {
             rating: 4,
             body: "",
-            photoFile: null
+            photoFile: null,
+            photoUrl: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,6 +16,7 @@ class ReviewForm extends React.Component{
 
     componentDidMount() {
         this.props.fetchBusiness(this.props.businessId)
+        this.props.clearErrors()
     }
 
     handleSubmit(e){
@@ -37,15 +39,7 @@ class ReviewForm extends React.Component{
             business_id: businessId
         });
         
-        // this.props.createReview(review); 
-debugger
-        $.ajax({
-            url: "/api/reviews",
-            method: "POST",
-            data: formData,
-            contentType: false,
-            processData: false
-        });
+        this.props.createReview(formData); 
 
         <Redirect to={`/businesses/${businessId}`} />
 
@@ -53,7 +47,14 @@ debugger
     }
 
     handleFile(e){
-        this.setState({photoFile: e.currentTarget.files[0]})
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () =>{
+            this.setState({photoFile: file, photoUrl: fileReader.result})
+        };
+        if(file){
+            fileReader.readAsDataURL(file);
+        }  
     }
 
     update(field) {
@@ -106,7 +107,7 @@ debugger
 
     render(){
         if (!this.props.business) return null;
-
+        const preview = this.state.photoUrl ? <img className="review-preview" src={this.state.photoUrl}/> : null;
         return(
             <div className="review-page">
                 <div className="review-form-header">
@@ -137,11 +138,12 @@ debugger
                                 <textarea
                                     value={this.state.body}
                                     onChange={this.update("body")}
-                                ></textarea>
+                                ></textarea>{preview}
                                 <div className="errors">{this.renderErrors()}</div>
                                 <input type="file" onChange={this.handleFile.bind(this)}/>
+                                
                             </div>
-                            <button type="submit" className="post-review-btn" >Post Review</button>
+                            <button type="submit" className="post-review-btn" onClick={this.props.clearErrors()}>Post Review</button>
                             
                         </form>
                     </div>

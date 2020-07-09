@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import { fetchBusiness } from '../actions/business_actions';
-import {createReview} from "../actions/review_actions";
+import {createReview, clearErrors} from "../actions/review_actions";
 import { logout } from "../actions/session_actions";
 import ReviewForm from "./review_form";
 
@@ -18,6 +18,7 @@ const mDTP = (dispatch) => ({
     createReview: review => dispatch(createReview(review)),
     logout: () => dispatch(logout()),
     fetchBusiness: businessId => dispatch(fetchBusiness(businessId)),
+    clearErrors: () => dispatch(clearErrors())
 });
 
 export default connect(mSTP, mDTP)(ReviewForm);

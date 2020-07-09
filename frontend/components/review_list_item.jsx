@@ -55,6 +55,7 @@ class ReviewListItem extends React.Component{
                 <p className="rating">{this.starRating()}</p>
                 <p className="date">{formatDate(this.props.review.created_at)}</p>
                 <p className="body">{this.props.review.body}</p>
+                <img className="review-pic" src={this.props.review.photoUrl}/>
             </section>
             </div>
         )

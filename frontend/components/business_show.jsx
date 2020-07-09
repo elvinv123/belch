@@ -77,7 +77,7 @@ class BusinessShow extends React.Component{
             case 4:
                 return <img className="rating" src={window.ratingfour_img_1} />;
             case 3:
-                return <img className="ratingt" src={window.ratingthree_img_1} />;
+                return <img className="rating" src={window.ratingthree_img_1} />;
             case 2:
                 return <img className="rating" src={window.ratingtwo_img_1} />;
             case 1:

@@ -25,11 +25,7 @@ class SessionForm extends React.Component {
     }
 
     demoLogin(e) {
-        // const demo = { email: "demouser@demo.com", password: "demouser"}
         this.setState(this.props.demo)
-        // debugger
-        // this.props.processForm(this.state).then(console.log("good"));
-        // this.handleChange(this.state);
     }
 
     renderErrors() {

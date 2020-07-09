@@ -61,7 +61,7 @@
 .review-form-container{
     
     width: 45vw;
-    height: 48.5vh;
+    min-height: 48.5vh;
     padding: 5px 9px;
     margin: 0px 0px 18px;
     display: block;
@@ -190,8 +190,12 @@ width: 45vw;
 }
 
 .login-logout{
-transform: translate(55vw,-1vw);
-position: relative;
-display: inline-block;
-width: 400px;
+    transform: translate(55vw,-1vw);
+    position: relative;
+    display: inline-block;
+    width: 400px;
+}
+
+.review-preview{
+    width: 175px;
 }
