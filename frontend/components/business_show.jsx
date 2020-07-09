@@ -120,7 +120,7 @@ class BusinessShow extends React.Component{
                         
                         <section className="buiness-buttons">
                             <section className="write-a-review" >
-                                <Link to={`/businesses/${this.props.businessId}/review`}>
+                                <Link to={`/businesses/${this.props.businessId}/review`} onClick={this.props.clearErrors()}>
                                     <img src={window.review_img_1} />
                                 </Link>
                             </section>

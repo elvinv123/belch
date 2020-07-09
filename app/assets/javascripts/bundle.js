@@ -983,7 +983,8 @@ var BusinessShow = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "write-a-review"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/businesses/".concat(this.props.businessId, "/review")
+          to: "/businesses/".concat(this.props.businessId, "/review"),
+          onClick: this.props.clearErrors()
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.review_img_1
         }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1073,6 +1074,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./business_show */ "./frontend/components/business_show.jsx");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/business_actions */ "./frontend/actions/business_actions.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
+
 
 
 
@@ -1096,6 +1099,9 @@ var mDTP = function mDTP(dispatch) {
     },
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
     }
   };
 };
@@ -1318,11 +1324,12 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchBusiness(this.props.businessId);
-      this.props.clearErrors();
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var businessId = parseInt(this.props.match.params.businessId);
       var formData = new FormData();
@@ -1337,23 +1344,25 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       var review = Object.assign({}, this.state, {
         business_id: businessId
       });
-      this.props.createReview(formData);
-
-      /*#__PURE__*/
-      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/businesses/".concat(businessId)
+      this.props.createReview(formData).then(function () {
+        if (_this2.props.errors.length === 0) {
+          /*#__PURE__*/
+          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+            to: "/businesses/".concat(businessId)
+          });
+        }
       });
     }
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
       fileReader.onloadend = function () {
-        _this2.setState({
+        _this3.setState({
           photoFile: file,
           photoUrl: fileReader.result
         });
@@ -1366,16 +1375,16 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this3 = this;
+      var _this4 = this;
 
       if (field === "rating") {
         return function (e) {
-          return _this3.setState(_defineProperty({}, field, parseInt(e.currentTarget.value)));
+          return _this4.setState(_defineProperty({}, field, parseInt(e.currentTarget.value)));
         };
       }
 
       return function (e) {
-        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this4.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {
@@ -1517,8 +1526,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleFile.bind(this)
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        className: "post-review-btn",
-        onClick: this.props.clearErrors()
+        className: "post-review-btn"
       }, "Post Review")))));
     }
   }]);

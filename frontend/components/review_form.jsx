@@ -16,8 +16,8 @@ class ReviewForm extends React.Component{
 
     componentDidMount() {
         this.props.fetchBusiness(this.props.businessId)
-        this.props.clearErrors()
     }
+
 
     handleSubmit(e){
         e.preventDefault();
@@ -39,11 +39,11 @@ class ReviewForm extends React.Component{
             business_id: businessId
         });
         
-        this.props.createReview(formData); 
-
-        <Redirect to={`/businesses/${businessId}`} />
-
-       
+        this.props.createReview(formData).then(()=>{
+            if (this.props.errors.length ===0){
+            <Redirect to={`/businesses/${businessId}`} />
+        }
+        }); 
     }
 
     handleFile(e){
@@ -143,7 +143,7 @@ class ReviewForm extends React.Component{
                                 <input type="file" onChange={this.handleFile.bind(this)}/>
                                 
                             </div>
-                            <button type="submit" className="post-review-btn" onClick={this.props.clearErrors()}>Post Review</button>
+                            <button type="submit" className="post-review-btn" >Post Review</button>
                             
                         </form>
                     </div>

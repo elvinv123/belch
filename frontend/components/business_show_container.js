@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import BusinessShow from './business_show';
 import { fetchBusiness } from '../actions/business_actions';
 import { logout } from "../actions/session_actions";
+import { clearErrors} from "../actions/review_actions";
 
 const mSTP = (state, ownProps) =>{
 
@@ -20,6 +21,7 @@ const mDTP = dispatch => {
     
     fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
     logout: () => dispatch(logout()),
+    clearErrors: () => dispatch(clearErrors())
 }};
 
 export default connect(mSTP, mDTP)(BusinessShow);
