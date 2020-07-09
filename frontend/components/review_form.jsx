@@ -22,9 +22,14 @@ class ReviewForm extends React.Component{
         const businessId = parseInt(this.props.match.params.businessId);
 
         const formData = new FormData();
+
         formData.append('review[rating]', this.state.rating)
         formData.append('review[body]', this.state.body)
-        formData.append('review[photo]', this.state.photoFile)
+
+        if (this.state.photoFile) {
+            formData.append('review[photo]', this.state.photoFile)
+        }
+
         formData.append('review[business_id]', businessId)
 
         
@@ -33,7 +38,7 @@ class ReviewForm extends React.Component{
         });
         
         // this.props.createReview(review); 
-
+debugger
         $.ajax({
             url: "/api/reviews",
             method: "POST",
