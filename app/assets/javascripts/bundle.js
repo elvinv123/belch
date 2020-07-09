@@ -1335,15 +1335,12 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       var formData = new FormData();
       formData.append('review[rating]', this.state.rating);
       formData.append('review[body]', this.state.body);
+      formData.append('review[business_id]', businessId);
 
       if (this.state.photoFile) {
         formData.append('review[photo]', this.state.photoFile);
       }
 
-      formData.append('review[business_id]', businessId);
-      var review = Object.assign({}, this.state, {
-        business_id: businessId
-      });
       this.props.createReview(formData).then(function () {
         if (_this2.props.errors.length === 0) {
           /*#__PURE__*/

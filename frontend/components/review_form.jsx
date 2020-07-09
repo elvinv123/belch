@@ -27,17 +27,11 @@ class ReviewForm extends React.Component{
 
         formData.append('review[rating]', this.state.rating)
         formData.append('review[body]', this.state.body)
+        formData.append('review[business_id]', businessId)
 
         if (this.state.photoFile) {
             formData.append('review[photo]', this.state.photoFile)
         }
-
-        formData.append('review[business_id]', businessId)
-
-        
-        const review = Object.assign({}, this.state, {
-            business_id: businessId
-        });
         
         this.props.createReview(formData).then(()=>{
             if (this.props.errors.length ===0){
@@ -108,6 +102,7 @@ class ReviewForm extends React.Component{
     render(){
         if (!this.props.business) return null;
         const preview = this.state.photoUrl ? <img className="review-preview" src={this.state.photoUrl}/> : null;
+        
         return(
             <div className="review-page">
                 <div className="review-form-header">
@@ -115,7 +110,6 @@ class ReviewForm extends React.Component{
                     {this.logged_in()}
                     <p>Write a Review</p>
                 </div>
-                
                 <div className="review-page-maincontent">
                     <div className="review-bucket">
                         <p className="business-title"><Link to={`/businesses/${this.props.business.id}`}>{this.props.business.name}</Link></p>
@@ -141,14 +135,10 @@ class ReviewForm extends React.Component{
                                 ></textarea>{preview}
                                 <div className="errors">{this.renderErrors()}</div>
                                 <input type="file" onChange={this.handleFile.bind(this)}/>
-                                
                             </div>
                             <button type="submit" className="post-review-btn" >Post Review</button>
-                            
                         </form>
                     </div>
-                    
-                    
                 </div>
             </div>
         )
