@@ -35,7 +35,8 @@ class ReviewForm extends React.Component{
         
         this.props.createReview(formData).then(()=>{
             if (this.props.errors.length ===0){
-            <Redirect to={`/businesses/${businessId}`} />
+                this.props.history.push(`/businesses/${businessId}`)
+                debugger
         }
         }); 
     }
@@ -136,7 +137,7 @@ class ReviewForm extends React.Component{
                                 <div className="errors">{this.renderErrors()}</div>
                                 <input type="file" onChange={this.handleFile.bind(this)}/>
                             </div>
-                            <button type="submit" className="post-review-btn" >Post Review</button>
+                            <button type="submit"  onClick={this.props.clearErrors()} className="post-review-btn" >Post Review</button>
                         </form>
                     </div>
                 </div>

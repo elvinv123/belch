@@ -39,6 +39,7 @@ class ReviewListItem extends React.Component{
     // }
 
     render(){ 
+        if(!this.props.author) return null;
         const profilepic = this.props.author.photoUrl.length === 0 ? <img className="profile-pic" src={window.profilepic_img_1} /> : <img className="profile-pic" src={this.props.author.photoUrl} />
         return(
             <div className="review-container">

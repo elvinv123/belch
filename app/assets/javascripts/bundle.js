@@ -1353,10 +1353,9 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
 
       this.props.createReview(formData).then(function () {
         if (_this2.props.errors.length === 0) {
-          /*#__PURE__*/
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-            to: "/businesses/".concat(businessId)
-          });
+          _this2.props.history.push("/businesses/".concat(businessId));
+
+          debugger;
         }
       });
     }
@@ -1533,6 +1532,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleFile.bind(this)
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
+        onClick: this.props.clearErrors(),
         className: "post-review-btn"
       }, "Post Review")))));
     }
@@ -1701,6 +1701,7 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      if (!this.props.author) return null;
       var profilepic = this.props.author.photoUrl.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-pic",
         src: window.profilepic_img_1
