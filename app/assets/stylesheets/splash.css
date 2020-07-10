@@ -87,7 +87,8 @@
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-55%, 170px);
+    transform: translate(-55%, 187px);
+    -webkit-transform: translate(-55%, 187px);
 }
 
 .search-bar button{
@@ -99,7 +100,9 @@
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-421.5%, 187.5px);
+    transform: translate(-421.5%, 187px);
+    -webkit-transform: translate(-421.5%, 187px);
+    vertical-align: top;
 }
 
 .magnefying_glass{

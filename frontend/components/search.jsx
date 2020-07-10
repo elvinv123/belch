@@ -73,7 +73,8 @@ class Search extends React.Component{
             <div className="search-page">
                 <div className="search-page-header">
                     <Link to={`/`}><img className="search-page-logo" src={window.logo_img_1} /></Link>
-                    <form className="search-search-bar" onSubmit={this.handleSubmit}>
+                    <div className="search-search-bar">
+                    <form onSubmit={this.handleSubmit}>
                         <input type="text"
                             value={category}
                             placeholder="Find tacos, bars, pizza"
@@ -81,6 +82,7 @@ class Search extends React.Component{
                         />
                         <button type="submit"><img className="magnefying_glass" src={window.search} /></button>
                     </form>
+                    </div>
                     {this.logged_in()}<BusinessMap businesses={this.props.businesses} />
                 </div>
                 <section className="search-page-maincontent">
