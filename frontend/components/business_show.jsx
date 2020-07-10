@@ -188,6 +188,7 @@ class BusinessShow extends React.Component{
                         <a href="https://linkedin.com/in/elvin-valette-5b2945a5"><img className="linkedin" src={window.linkedin} /></a>
                         <a href="https://github.com/elvinv123"><img className="github" src={window.github} /></a>
                         <a href="https://angel.co/u/elvin-valette"><img className="angellist" src={window.angellist} /></a>
+                        <a href="https://elvinv123.github.io"><img className="portfolio" src={window.portfolio} /></a>
                     </section>
                     <img className="footer_img_1" src={window.footer_img_1} />
                 </div>
