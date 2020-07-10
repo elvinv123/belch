@@ -110,11 +110,11 @@
     margin-right: 50%;
     margin-top: 40px;
     position: relative;
-    transform: translate(-42%, 0%)
+    transform: translate(-36%, 0%)
   }
   .socials img{
     display: inline-block;
-    height: 100px;
+    height: 75px;
     margin-right: 100px;
   }
 
