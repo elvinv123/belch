@@ -229,7 +229,7 @@ scroll box*/
     padding-right: 22px;
     padding-top: 12px;
 }
-.phone p, .website p, .directions a, .message a{
+.phone a, .website p, .directions a, .message a{
     display: inline-block;
     padding-bottom: 14px;
     padding-top: 12px;
@@ -245,7 +245,7 @@ scroll box*/
     margin-left: 22px;
 }
 
-.website p a, .directions a, .message a{
+.website p a, .directions a, .message a, .phone a{
     color: #00838f;
 }
 

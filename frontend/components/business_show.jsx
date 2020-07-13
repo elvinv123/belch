@@ -133,7 +133,7 @@ class BusinessShow extends React.Component{
                         </section>
                         <section className="phone">
                             <img src={window.phone_img_1} />
-                            <p>{this.props.business.phone_number}</p>
+                            <a href={`tel:${this.props.business.phone_number}`}>{this.props.business.phone_number}</a>
                         </section>
                         {/* <section className="directions">
                         <img src={window.directions_img_1} />
