@@ -1,6 +1,8 @@
 # Belch     
 ![logo](app/assets/images/logo.png)
-Belch is an social networking site inspired by Yelp that allows users to review places to eat in New York City.
+Belch is an social networking site inspired by Yelp that allows users to review places to eat in New York City. 
+Check out the live version [here](https://belch-aa.herokuapp.com/#/)
+[Design Documents](https://github.com/elvinv123/belch/wiki/)
 ## Technologies
 * PostgreSQL
 * Ruby on Rails
@@ -15,7 +17,7 @@ Belch is an social networking site inspired by Yelp that allows users to review 
 * Search
 
 ## User Authentication
-* Users have the option of creating an acount, logging in with an existing account or browse as a demo user
+* Users have the option of creating an acount, logging in with an existing account or browse as a demo user.
 ![Signup form](app/assets/images/signup_form_belch.gif)
 
 ## Business Page
@@ -29,3 +31,8 @@ Belch is an social networking site inspired by Yelp that allows users to review 
 * The categories are set on the Rails backend using the `categories` and the `categories_businesses` table.
 * The `categories_businesses`table joins the `categories` and `businesses` tables.
 ![Search](app/assets/images/belch_search.gif)
+
+## Reviews
+* The reviews form makes use of Amazon S3 and allows users to post an image to go along with their written review.
+* Logged in users are able to leave a review and rating (1-5 stars) on a business.
+![Reviews](app/assets/images/belch_review.gif)
