@@ -176,7 +176,7 @@
 }
 .hours{
     display:inline-block;
-    transform: translate(0vw, -6.5vw);
+    transform: translate(0vw, -5vw);
 }
 
 .hours ul li{

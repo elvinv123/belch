@@ -88,7 +88,6 @@
     background-color:#f43939;
     display: inline-block;
     border-radius: 0px 4px 4px 0px;
-    
     transform: translate(20vw, 50px);
     -webkit-transform: translate(20vw, 50px);
     box-shadow: 0px 0px 20px -5px #bbbac0;
@@ -100,15 +99,12 @@
 }
 
 .search-search-bar input{
-
     transform: translate(20vw, 50px);
     -webkit-transform: translate(20vw, 50px);
     box-shadow: 0px 0px 20px -5px #bbbac0;
-    
     padding-left: 10px;
     display: inline-block;
-
-        width: 481px;
+    width: 481px;
     height: 45px;
     background-color: white;
     display: inline-block;
@@ -132,15 +128,11 @@
     width: 25vw;
     height: 87vh;
     transform: translate(74.8vw, 80px);
-
 }
 
 .categories-buttons{
     width: 15vw;
     display: inline-block; 
-    /* height: 500px */
-    
-
 }
 
 .cat-buttons{
@@ -193,23 +185,23 @@
 
 .price-buttons button{
     text-align: center;
-display: inline-block;
-border: 1px solid #ccc;
-padding: 8px 10px;
-width: 28px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    width: 28px;
 }
 
 .price-buttons .d{
-display: inline-block;
-border: 1px solid #ccc;
-
-border-radius: 15px 0px 0px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px 0px 0px 15px;
 }
-.price-buttons .dddd{
-display: inline-block;
-border: 1px solid #ccc;
 
-border-radius: 0px 15px 15px 0px;
+.price-buttons .dddd{
+    display: inline-block;
+    border: 1px solid #ccc;
+
+    border-radius: 0px 15px 15px 0px;
 }
 
 
