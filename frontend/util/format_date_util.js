@@ -1,5 +1,3 @@
-// NB: this file is complete - you do not to write/edit anything!
-
 export const formatDate = date => {
     const months = {
         0: '1',
