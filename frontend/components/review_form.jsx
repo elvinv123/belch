@@ -36,7 +36,7 @@ class ReviewForm extends React.Component{
         this.props.createReview(formData).then(()=>{
             if (this.props.errors.length ===0){
                 this.props.history.push(`/businesses/${businessId}`)
-                debugger
+                
         }
         }); 
     }

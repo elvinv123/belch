@@ -23,20 +23,7 @@ class ReviewListItem extends React.Component{
         }
     }
 
-    // profilePic(){
-    //     debugger
-    //     if(this.props.author.photoUrl.length === 0){
-    //         debugger
-    //         return(
-    //             <img className="profile-pic" src={window.profilepic_img_1} />
-    //         ) 
-    //     }else{
-    //     debugger
-    //     return( 
-    //         <img className="profile-pic" src={this.props.author.photoUrl} />
-    //     )
-    //     }
-    // }
+  
 
     render(){ 
         if(!this.props.author) return null;
