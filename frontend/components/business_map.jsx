@@ -21,7 +21,6 @@ class BusinessMap extends React.Component{
                 zoom: 12,
                 disableDefaultUI: true
             };
-        // wrap this.mapNode in a Google Map
             this.map = new google.maps.Map(this.mapNode, mapOptions);
             this.MarkerManager = new MarkerManager(this.map);
 
@@ -34,7 +33,6 @@ class BusinessMap extends React.Component{
                 zoom: 11,
                 disableDefaultUI: true
             };
-            // wrap this.mapNode in a Google Map
             this.map = new google.maps.Map(this.mapNode, mapOptions);
             this.MarkerManager = new MarkerManager(this.map);
     

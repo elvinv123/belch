@@ -15,8 +15,7 @@ const receiveBusiness = (business) => ({
     type: RECEIVE_BUSINESS,
     business
 })
-//reveviews
-//destructure data from business extract review author and average rating
+
 const receiveReviews = (business) => ({
     type: RECEIVE_REVIEWS,
     reviews: business.reviews
@@ -25,10 +24,7 @@ const receiveUsers = (business) => ({
     type: RECEIVE_USERS,
     users: business.authors
 })
-// export const fetchBusiness = (businessId)=> dispatch =>(
-//     BusinessAPIUtil.fetchBusiness(businessId)
-//     .then(business => dispatch(receiveBusiness(business)))
-// )
+
 
 export const fetchBusinesses = (filters) => dispatch => (
     BusinessAPIUtil.fetchBusinesses(filters)
