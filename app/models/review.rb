@@ -14,6 +14,4 @@ class Review < ApplicationRecord
     class_name: :Business
 
     has_one_attached :photo
-
-
 end

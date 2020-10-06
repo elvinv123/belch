@@ -120,9 +120,7 @@ var receiveBusiness = function receiveBusiness(business) {
     type: RECEIVE_BUSINESS,
     business: business
   };
-}; //reveviews
-//destructure data from business extract review author and average rating
-
+};
 
 var receiveReviews = function receiveReviews(business) {
   return {
@@ -136,11 +134,7 @@ var receiveUsers = function receiveUsers(business) {
     type: RECEIVE_USERS,
     users: business.authors
   };
-}; // export const fetchBusiness = (businessId)=> dispatch =>(
-//     BusinessAPIUtil.fetchBusiness(businessId)
-//     .then(business => dispatch(receiveBusiness(business)))
-// )
-
+};
 
 var fetchBusinesses = function fetchBusinesses(filters) {
   return function (dispatch) {
@@ -723,8 +717,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
           },
           zoom: 12,
           disableDefaultUI: true
-        }; // wrap this.mapNode in a Google Map
-
+        };
         this.map = new google.maps.Map(this.mapNode, mapOptions);
         this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -736,8 +729,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
           },
           zoom: 11,
           disableDefaultUI: true
-        }; // wrap this.mapNode in a Google Map
-
+        };
         this.map = new google.maps.Map(this.mapNode, _mapOptions);
         this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
         this.MarkerManager.updateMarkers(this.props.businesses);
@@ -1356,8 +1348,6 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       this.props.createReview(formData).then(function () {
         if (_this2.props.errors.length === 0) {
           _this2.props.history.push("/businesses/".concat(businessId));
-
-          debugger;
         }
       });
     }
@@ -1685,21 +1675,7 @@ var ReviewListItem = /*#__PURE__*/function (_React$Component) {
             src: window.onestar_img_1
           });
       }
-    } // profilePic(){
-    //     debugger
-    //     if(this.props.author.photoUrl.length === 0){
-    //         debugger
-    //         return(
-    //             <img className="profile-pic" src={window.profilepic_img_1} />
-    //         ) 
-    //     }else{
-    //     debugger
-    //     return( 
-    //         <img className="profile-pic" src={this.props.author.photoUrl} />
-    //     )
-    //     }
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -2425,9 +2401,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
- // import pic from "../../app/assets/images/signup_illustration.png"
-// import { AuthRoute } from "../util/route_util"
-// import LoginFormContainer from "./login_form_container";
 
 
 
@@ -2807,18 +2780,7 @@ __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
- // const reviewsReducer = (state = {}, action) => {
-//     Object.freeze(state);
-//     switch (action.type) {
-//         case RECEIVE_BUSINESS:
-//             return Object.assign({}, state, action.reviews);
-//         case RECEIVE_REVIEW:
-//             const { review } = action;
-//             return Object.assign({}, state, { [review.id]: review });
-//         default:
-//             return state;
-//     }
-// }
+
 
 var reviewsReducer = function reviewsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -2828,7 +2790,7 @@ var reviewsReducer = function reviewsReducer() {
   switch (action.type) {
     case _actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_BUSINESS"]:
       var reviews = action.business.reviews;
-      return Object.assign({}, state, reviews);
+      return reviews;
 
     case _actions_review_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_REVIEW"]:
       var review = action.review;
@@ -2947,14 +2909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/business_actions */ "./frontend/actions/business_actions.js");
 
- // const usersReducer = (state = {}, action) => {
-//     switch (action.type) {
-//         case RECEIVE_CURRENT_USER:
-//             return Object.assign({}, state, { [action.user.id]: action.user });
-//         default:
-//             return state;
-//     }
-// };
+
 
 var usersReducer = function usersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -3038,7 +2993,6 @@ var fetchBusiness = function fetchBusiness(businessId) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatDate", function() { return formatDate; });
-// NB: this file is complete - you do not to write/edit anything!
 var formatDate = function formatDate(date) {
   var months = {
     0: '1',
@@ -3085,33 +3039,17 @@ var MarkerManager = /*#__PURE__*/function () {
 
     this.map = map;
     this.markers = {};
-  } //...
-
+  }
 
   _createClass(MarkerManager, [{
     key: "updateMarkers",
     value: function updateMarkers(businesses) {
       var _this = this;
 
-      var businessesObj = {}; // businesses.values.forEach(business => businessesObj[business.id] = business);
-      // businesses
-      //     .filter(business => !this.markers[business.id])
-      //     .forEach(newbusiness => this.createMarkerFromBusiness(newbusiness))
-      // Object.keys(this.markers)
-      //     .filter(businessId => !businessesObj[businessId])
-      //     .forEach((businessId) => this.removeMarker(this.markers[businessId])) 
-
+      var businessesObj = {};
       Object.values(businesses).forEach(function (business) {
         return _this.createMarkerFromBusiness(business);
-      }); // for (i = 0; i < markers.length; i++) {
-      //     var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-      //     bounds.extend(position);
-      //     marker = new google.maps.Marker({
-      //         position: position,
-      //         map: map,
-      //         title: markers[i][0]
-      //     });
-      // }
+      });
     }
   }, {
     key: "createMarkerFromBusiness",
