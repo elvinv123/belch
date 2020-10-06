@@ -12,9 +12,10 @@ class Business < ApplicationRecord
     has_many_attached :photos
 
     def self.search_category(category)
-       
         if(category.include?('$'))
             return Business.where(price_range: category)
+        elsif(category == nil)
+            return Business.all
         else 
             cat_id = Category.find_by!(name: category).id
             cat_b = CategoriesBusiness.find_by(category_id: cat_id)

@@ -15,8 +15,11 @@ class BusinessIndex extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-
-        this.props.history.push(`/businesses/search/${this.state.category}`);
+        if (this.state.category == "") {
+            this.props.history.push(`/businesses/search/food`);
+        } else {
+            this.props.history.push(`/businesses/search/${this.state.category}`);
+        }
     }
 
     handleChange(type) {

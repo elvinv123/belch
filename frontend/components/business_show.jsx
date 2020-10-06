@@ -21,7 +21,11 @@ class BusinessShow extends React.Component{
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.history.push(`/businesses/search/${this.state.category}`);
+        if (this.state.category == "") {
+            this.props.history.push(`/businesses/search/food`);
+        } else {
+            this.props.history.push(`/businesses/search/${this.state.category}`);
+        }
     }
 
     handleChange(type) {
@@ -87,6 +91,7 @@ class BusinessShow extends React.Component{
 
 
     render(){
+
         if (this.props.business){
             const authors = this.props.authors;
 

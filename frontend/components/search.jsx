@@ -20,8 +20,12 @@ class Search extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-
-        this.props.history.push(`/businesses/search/${this.state.category}`);
+        if(this.state.category ==""){
+           this.props.history.push(`/businesses/search/food`); 
+        }else{
+            this.props.history.push(`/businesses/search/${this.state.category}`);
+        }
+        
         window.location.reload();
     }
 
@@ -61,6 +65,7 @@ class Search extends React.Component{
         }
     }
     button(category){
+        
         this.props.history.push(`/businesses/search/${category}`)
         window.location.reload();
     }
