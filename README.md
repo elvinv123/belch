@@ -1,6 +1,6 @@
 # ![logo](app/assets/images/logo_readme.png)
 Belch is an social networking site inspired by Yelp that allows users to review places to eat in New York City. 
-Check out the live version [here](https://belch-aa.herokuapp.com/#/). Design documents can be found [here](https://github.com/elvinv123/belch/wiki/)
+Design documents can be found [here](https://github.com/elvinv123/belch/wiki/)
 ## Technologies
 * PostgreSQL
 * Ruby on Rails
